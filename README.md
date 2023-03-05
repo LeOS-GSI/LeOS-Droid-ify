@@ -14,6 +14,7 @@
 * No cards or inappropriate animations
 * Fast repository syncing
 * Standard Android components and minimal dependencies
+* share option
 
 
 ## :scroll: License

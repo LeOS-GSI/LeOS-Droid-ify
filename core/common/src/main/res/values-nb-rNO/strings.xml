@@ -208,5 +208,5 @@
     <string name="auto_update">Installer nye versjoner av programmer automatisk</string>
     <string name="waiting_to_start_installation">Venter på å starte installasjon …</string>
     <string name="installing">Installerer</string>
-    <string name="restart_app">Start Droid-ify på ny for å ta i bruk endringene</string>
+    <string name="restart_app">Start LeOS-Droid på ny for å ta i bruk endringene</string>
 </resources>
