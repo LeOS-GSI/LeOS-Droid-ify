@@ -133,6 +133,16 @@ data class Repository(
 			)
 		}, run {
 			defaultRepository(
+				"https://raw.githubusercontent.com/LeOS-GSI/repo/master/fdroid/repo",
+				"LeOS ungooled Apps",
+				"The respository includes goolge and trackerfree FOSS apps ",
+				21,
+				false,
+				"AA397AA3D66DE4AF62EBEF240C8DF60D508F5DA3080F79A7EAB97A48DCE2CE7D",
+				""
+			)
+		}, run {
+			defaultRepository(
 				"https://f-droid.org/archive",
 				"F-Droid Archive",
 				"The archive of the official F-Droid Free " +
