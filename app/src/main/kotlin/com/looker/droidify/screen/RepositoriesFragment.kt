@@ -3,27 +3,26 @@ package com.looker.droidify.screen
 import android.database.Cursor
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.looker.core.common.extension.dp
-import com.looker.core.common.extension.systemBarsMargin
+import androidx.recyclerview.widget.RecyclerView
 import com.looker.core.common.extension.systemBarsPadding
 import com.looker.droidify.database.CursorOwner
-import com.looker.droidify.databinding.RecyclerViewWithFabBinding
 import com.looker.droidify.service.Connection
 import com.looker.droidify.service.SyncService
+import com.looker.droidify.utility.Utils
 import com.looker.droidify.utility.extension.resources.sizeScaled
 import com.looker.droidify.utility.extension.screenActivity
 import com.looker.droidify.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
-import com.looker.core.common.R as CommonR
+import com.looker.droidify.R.drawable as drawableRes
+import com.looker.droidify.R.string as stringRes
 
 @AndroidEntryPoint
 class RepositoriesFragment : ScreenFragment(), CursorOwner.Callback {
-
-	private var _binding: RecyclerViewWithFabBinding? = null
-	private val binding get() = _binding!!
+	private var recyclerView: RecyclerView? = null
 
 	private val syncConnection = Connection(SyncService::class.java)
 
@@ -33,26 +32,21 @@ class RepositoriesFragment : ScreenFragment(), CursorOwner.Callback {
 		savedInstanceState: Bundle?,
 	): View {
 		super.onCreateView(inflater, container, savedInstanceState)
-		_binding = RecyclerViewWithFabBinding.inflate(inflater, container, false)
 		val view = fragmentBinding.root.apply {
-			binding.scrollUp.apply {
-				setIconResource(CommonR.drawable.ic_add)
-				setText(CommonR.string.add_repository)
-				setOnClickListener { screenActivity.navigateAddRepository() }
-				systemBarsMargin(16.dp)
-			}
-			binding.recyclerView.apply {
-				layoutManager = LinearLayoutManager(context)
-				isMotionEventSplittingEnabled = false
-				setHasFixedSize(true)
-				adapter = RepositoriesAdapter(
-					navigate = { screenActivity.navigateRepository(it.id) }
-				) { repository, isEnabled ->
-					repository.enabled != isEnabled &&
-							syncConnection.binder?.setEnabled(repository, isEnabled) == true
-				}
-				addItemDecoration(
-					DividerItemDecoration(context) { _, _, configuration ->
+			val content = fragmentBinding.fragmentContent
+			content.addView(
+				RecyclerView(content.context).apply {
+					id = android.R.id.list
+					layoutManager = LinearLayoutManager(context)
+					isMotionEventSplittingEnabled = false
+					setHasFixedSize(true)
+					adapter = RepositoriesAdapter(
+						navigate = { screenActivity.navigateRepository(it.id) }
+					) { repository, isEnabled ->
+						repository.enabled != isEnabled &&
+								syncConnection.binder?.setEnabled(repository, isEnabled) == true
+					}
+					addItemDecoration(DividerItemDecoration(context) { context, _, configuration ->
 						val padding = context.resources.sizeScaled(16)
 						configuration.set(
 							needDivider = true,
@@ -60,21 +54,13 @@ class RepositoriesFragment : ScreenFragment(), CursorOwner.Callback {
 							paddingStart = padding,
 							paddingEnd = padding
 						)
-					}
-				)
-				systemBarsPadding()
-			}
-			fragmentBinding.fragmentContent.addView(binding.root)
+					})
+					recyclerView = this
+				}
+			)
 		}
-		handleFab()
+		recyclerView?.systemBarsPadding()
 		return view
-	}
-
-	private fun handleFab() {
-		binding.recyclerView.setOnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
-			if (scrollY > oldScrollY) binding.scrollUp.shrink()
-			else binding.scrollUp.extend()
-		}
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,18 +69,26 @@ class RepositoriesFragment : ScreenFragment(), CursorOwner.Callback {
 		syncConnection.bind(requireContext())
 		screenActivity.cursorOwner.attach(this, CursorOwner.Request.Repositories)
 		screenActivity.onToolbarCreated(toolbar)
-		collapsingToolbar.title = getString(CommonR.string.repositories)
+		toolbar.menu.add(stringRes.add_repository)
+			.setIcon(Utils.getToolbarIcon(toolbar.context, drawableRes.ic_add))
+			.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS)
+			.setOnMenuItemClickListener {
+				view.post { screenActivity.navigateAddRepository() }
+				true
+			}
+		collapsingToolbar.title = getString(stringRes.repositories)
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 
-		_binding = null
+		recyclerView = null
+
 		syncConnection.unbind(requireContext())
 		screenActivity.cursorOwner.detach(this)
 	}
 
 	override fun onCursorData(request: CursorOwner.Request, cursor: Cursor?) {
-		(binding.recyclerView.adapter as RepositoriesAdapter).cursor = cursor
+		(recyclerView?.adapter as? RepositoriesAdapter)?.cursor = cursor
 	}
 }

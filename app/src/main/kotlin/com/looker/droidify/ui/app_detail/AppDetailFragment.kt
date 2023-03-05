@@ -226,7 +226,9 @@ class AppDetailFragment() : ScreenFragment(), AppDetailAdapter.Callbacks {
 						}
 				}
 				launch {
-					installer[packageName].collectLatest { updateInstallState(it) }
+					(installer stateOf packageName.toPackageName()).collectLatest {
+						updateInstallState(it)
+					}
 				}
 			}
 		}
@@ -337,7 +339,7 @@ class AppDetailFragment() : ScreenFragment(), AppDetailAdapter.Callbacks {
 			InstallState.Queued -> AppDetailAdapter.Status.PendingInstall
 			else -> AppDetailAdapter.Status.Idle
 		}
-		updateButtons(installing = state == InstallState.Installing || state == InstallState.Queued)
+		updateButtons(installing = state == InstallState.Installing)
 		(recyclerView?.adapter as? AppDetailAdapter)?.setStatus(status)
 	}
 

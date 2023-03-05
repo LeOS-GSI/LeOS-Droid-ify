@@ -60,19 +60,14 @@ internal class SessionInstaller(private val context: Context) : BaseInstaller {
 			val sizeBytes = cacheFile.length()
 			cacheFile.inputStream().use { fileStream ->
 				activeSession.openWrite(cacheFile.name, 0, sizeBytes).use { outputStream ->
-					if (cont.isActive) {
-						fileStream.copyTo(outputStream)
-						activeSession.fsync(outputStream)
-					}
+					fileStream.copyTo(outputStream)
+					activeSession.fsync(outputStream)
 				}
 			}
 
 			val pendingIntent = PendingIntent.getService(context, id, intent, flags)
 
-			if (cont.isActive) activeSession.commit(pendingIntent.intentSender)
-		}
-		cont.invokeOnCancellation {
-			sessionInstaller.abandonSession(id)
+			activeSession.commit(pendingIntent.intentSender)
 		}
 	}
 
@@ -91,6 +86,6 @@ internal class SessionInstaller(private val context: Context) : BaseInstaller {
 
 	override fun cleanup() {
 		installerCallbacks.forEach { sessionInstaller.unregisterSessionCallback(it) }
-		sessionInstaller.mySessions.forEach { sessionInstaller.abandonSession(it.sessionId) }
+		sessionInstaller.allSessions.forEach { sessionInstaller.abandonSession(it.sessionId) }
 	}
 }

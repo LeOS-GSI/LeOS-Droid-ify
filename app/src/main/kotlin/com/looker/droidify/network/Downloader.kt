@@ -1,7 +1,7 @@
 package com.looker.droidify.network
 
 import com.looker.core.common.result.Result
-import com.looker.droidify.utility.getProgress
+import com.looker.droidify.utility.ProgressInputStream
 import kotlinx.coroutines.suspendCancellableCoroutine
 import okhttp3.Call
 import okhttp3.Callback
@@ -51,9 +51,14 @@ object Downloader {
 			get() = code == HttpURLConnection.HTTP_NOT_MODIFIED
 	}
 
-	fun createCall(block: Request.Builder.() -> Unit): Call {
-		val request = Request.Builder().apply(block).build()
-		val onion = request.url.host.endsWith(".onion")
+	fun createCall(request: Request.Builder, authentication: String): Call {
+		val oldRequest = request.build()
+		val newRequest = if (authentication.isNotEmpty()) {
+			request.addHeader("Authorization", authentication).build()
+		} else {
+			request.build()
+		}
+		val onion = oldRequest.url.host.endsWith(".onion")
 		val client = synchronized(clients) {
 			val proxy = if (onion) onionProxy else proxy
 			val clientConfiguration = ClientConfiguration(onion)
@@ -63,32 +68,27 @@ object Downloader {
 				client
 			}
 		}
-		return client.newCall(request)
+		return client.newCall(newRequest)
 	}
 
 	suspend fun downloadFile(
-		url: String,
-		target: File,
-		lastModified: String,
-		entityTag: String,
-		authentication: String,
+		url: String, target: File, lastModified: String, entityTag: String, authentication: String,
 		callback: (read: Long, total: Long?) -> Unit
 	): Result<RequestCode> = suspendCancellableCoroutine { cont ->
 		val start = if (target.exists()) target.length().let { if (it > 0L) it else null } else null
-		if (cont.isCompleted) return@suspendCancellableCoroutine
-		val call = createCall {
-			try {
-				url(url)
-				if (authentication.isNotEmpty()) addHeader("Authorization", authentication)
-				if (entityTag.isNotEmpty()) addHeader("If-None-Match", entityTag)
-				else if (lastModified.isNotEmpty()) addHeader("If-Modified-Since", lastModified)
-				if (start != null) addHeader("Range", "bytes=$start-")
-			} catch (e: IllegalArgumentException) {
-				cont.resume(Result.Error(e))
-			}
+		val request = try {
+			Request.Builder().url(url)
+		} catch (e: IllegalArgumentException) {
+			e.printStackTrace()
+			cont.resume(Result.Error(e))
+			null
+		}?.apply {
+			if (entityTag.isNotEmpty()) addHeader("If-None-Match", entityTag)
+			else if (lastModified.isNotEmpty()) addHeader("If-Modified-Since", lastModified)
+			if (start != null) addHeader("Range", "bytes=$start-")
 		}
-		if (cont.isCompleted) return@suspendCancellableCoroutine
-		call.enqueue(
+		val call = request?.let { createCall(it, authentication) }
+		call?.enqueue(
 			object : Callback {
 				override fun onFailure(call: Call, e: IOException) {
 					cont.resume(Result.Error(e))
@@ -96,8 +96,7 @@ object Downloader {
 
 				override fun onResponse(call: Call, response: Response) {
 					response.use { result ->
-						if (response.code == HttpURLConnection.HTTP_NOT_MODIFIED) {
-							if (cont.isCompleted) return
+						if (response.code == 304) {
 							cont.resume(
 								Result.Success(
 									RequestCode(
@@ -108,23 +107,23 @@ object Downloader {
 								)
 							)
 						} else {
-							if (cont.isCompleted) return
 							val body = result.body
 							val append = start != null && result.header("Content-Range") != null
 							val progressStart = if (append && start != null) start else 0L
 							val progressTotal =
 								body.contentLength().let { if (it >= 0L) it else null }
 									?.let { progressStart + it }
-							val inputStream = body.byteStream().getProgress {
+							val inputStream = ProgressInputStream(body.byteStream()) {
 								callback(progressStart + it, progressTotal)
 							}
-							val outputStream = FileOutputStream(target, append)
-							inputStream.use outerUse@{ input ->
+							inputStream.use { input ->
+								val outputStream = if (append) FileOutputStream(
+									target,
+									true
+								) else FileOutputStream(target)
 								outputStream.use { output ->
-									if (cont.isActive) {
-										input.copyTo(output)
-										output.fd.sync()
-									}
+									input.copyTo(output)
+									output.fd.sync()
 								}
 							}
 							cont.resume(
@@ -141,6 +140,6 @@ object Downloader {
 				}
 			}
 		)
-		cont.invokeOnCancellation { call.cancel() }
+		cont.invokeOnCancellation { call?.cancel() }
 	}
 }

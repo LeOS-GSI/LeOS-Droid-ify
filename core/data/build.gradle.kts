@@ -7,9 +7,11 @@ plugins {
 }
 
 android {
-	namespace = "com.looker.core.data"
 	compileSdk = Android.compileSdk
-	defaultConfig.minSdk = Android.minSdk
+	namespace = "com.looker.core.data"
+	defaultConfig {
+		minSdk = Android.minSdk
+	}
 
 	buildTypes {
 		release {
@@ -22,10 +24,12 @@ android {
 		}
 	}
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
 	}
-	kotlinOptions.jvmTarget = "11"
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
 	buildFeatures {
 		buildConfig = false
 		aidl = false

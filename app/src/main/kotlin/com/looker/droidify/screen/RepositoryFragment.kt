@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.widget.NestedScrollView
 import com.looker.core.common.extension.getColorFromAttr
-import com.looker.core.common.extension.systemBarsPadding
+import com.looker.droidify.R
 import com.looker.droidify.database.Database
 import com.looker.droidify.databinding.RepositoryPageBinding
 import com.looker.droidify.service.Connection
@@ -19,7 +19,6 @@ import com.looker.droidify.service.SyncService
 import com.looker.droidify.utility.extension.screenActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
-import com.google.android.material.R as MaterialR
 import com.looker.core.common.R.string as stringRes
 
 @AndroidEntryPoint
@@ -58,7 +57,6 @@ class RepositoryFragment() : ScreenFragment() {
 		collapsingToolbar.title = getString(stringRes.repository)
 		val scroll = NestedScrollView(binding.root.context)
 		scroll.addView(binding.root)
-		scroll.systemBarsPadding()
 		fragmentBinding.fragmentContent.addView(scroll)
 		return fragmentBinding.root
 	}
@@ -112,7 +110,7 @@ class RepositoryFragment() : ScreenFragment() {
 						val builder =
 							SpannableStringBuilder(getString(stringRes.repository_unsigned_DESC))
 						builder.setSpan(
-							ForegroundColorSpan(requireContext().getColorFromAttr(MaterialR.attr.colorError).defaultColor),
+							ForegroundColorSpan(requireContext().getColorFromAttr(R.attr.colorError).defaultColor),
 							0, builder.length, SpannableStringBuilder.SPAN_EXCLUSIVE_EXCLUSIVE
 						)
 						repoFingerprint.text.text = builder

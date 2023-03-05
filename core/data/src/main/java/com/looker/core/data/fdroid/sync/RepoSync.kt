@@ -12,14 +12,13 @@ import io.ktor.client.request.get
 import io.ktor.client.request.url
 import io.ktor.http.ifModifiedSince
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.SendChannel
 import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.selects.select
-import kotlinx.coroutines.withContext
 import java.util.*
 import java.util.jar.JarFile
 
@@ -53,7 +52,13 @@ private fun CoroutineScope.downloader(
 				repoMutableList.forEach { onDownload(it, jar) }
 			}
 			repos.onReceive { repo ->
-				val repoLocation = repo.toLocation(context)
+				val repoLocation = RepoLocation(
+					context = context,
+					url = repo.address + "/index-v1.jar",
+					timestamp = repo.timestamp,
+					username = repo.username,
+					password = repo.password
+				)
 				val repoList = requested[repoLocation]
 				if (repoList == null) {
 					requested[repoLocation] = mutableListOf(repo)
@@ -76,7 +81,7 @@ private fun CoroutineScope.worker(
 	}
 }
 
-internal suspend fun downloadIndexJar(repoLocation: RepoLocation): RepoLocJar = withContext(Dispatchers.IO) {
+internal suspend fun downloadIndexJar(repoLocation: RepoLocation): RepoLocJar = coroutineScope {
 	val shouldAuthenticate =
 		repoLocation.username.isNotEmpty() && repoLocation.password.isNotEmpty()
 	val request = HttpRequestBuilder().apply {
@@ -84,7 +89,11 @@ internal suspend fun downloadIndexJar(repoLocation: RepoLocation): RepoLocJar = 
 		ifModifiedSince(Date(repoLocation.timestamp))
 		if (shouldAuthenticate) basicAuth(repoLocation.username, repoLocation.password)
 	}
-	val response = client.get(request)
+	val response = try {
+		client.get(request)
+	} catch (e: Exception) {
+		throw RepoSyncFailedException(e.message.toString())
+	}
 	val tempFile = Cache.getTemporaryFile(repoLocation.context)
 	val result = response.body<ByteArray>()
 	tempFile.writeBytes(result)
@@ -97,14 +106,6 @@ data class RepoLocation(
 	val timestamp: Long,
 	val username: String,
 	val password: String
-)
-
-fun Repo.toLocation(context: Context) = RepoLocation(
-	url = "$address/index-v1.jar",
-	context = context,
-	timestamp = timestamp,
-	username = username,
-	password = password
 )
 
 data class RepoLocJar(

@@ -75,11 +75,13 @@ android {
 	compileOptions {
 		isCoreLibraryDesugaringEnabled = true
 
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
 	}
 
-	kotlinOptions.jvmTarget = "11"
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
 
 	buildTypes {
 		getByName("debug") {
@@ -127,6 +129,7 @@ dependencies {
 
 	implementation(project(Modules.coreModel))
 	implementation(project(Modules.coreCommon))
+	implementation(project(Modules.coreData))
 	implementation(project(Modules.coreDatastore))
 	implementation(project(Modules.featureSettings))
 	implementation(project(Modules.installer))

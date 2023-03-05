@@ -43,7 +43,7 @@ object Excludes {
 }
 
 object Hilt {
-	private const val version = "2.45"
+	private const val version = "2.44.2"
 	const val classpath = "com.google.dagger:hilt-android-gradle-plugin:$version"
 	const val android = "com.google.dagger:hilt-android:$version"
 
@@ -59,7 +59,7 @@ object Jackson {
 }
 
 object Kotlin {
-	const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0"
+	const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1"
 	const val datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
 }
 

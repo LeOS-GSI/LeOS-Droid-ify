@@ -14,7 +14,6 @@ import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.ContextThemeWrapper
 import androidx.core.app.NotificationCompat
-import androidx.fragment.app.Fragment
 import com.looker.core.common.Constants
 import com.looker.core.common.SdkCheck
 import com.looker.core.common.extension.asSequence
@@ -23,33 +22,30 @@ import com.looker.core.common.extension.notificationManager
 import com.looker.core.common.formatSize
 import com.looker.core.common.result.Result
 import com.looker.core.common.sdkAbove
-import com.looker.core.datastore.UserPreferences
 import com.looker.core.datastore.UserPreferencesRepository
 import com.looker.core.datastore.model.SortOrder
 import com.looker.core.model.ProductItem
 import com.looker.core.model.Repository
 import com.looker.droidify.BuildConfig
 import com.looker.droidify.MainActivity
+import com.looker.droidify.R
 import com.looker.droidify.database.Database
 import com.looker.droidify.index.RepositoryUpdater
 import com.looker.droidify.utility.Utils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import java.lang.ref.WeakReference
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.math.roundToInt
-import com.looker.core.common.R as CommonR
 import com.looker.core.common.R.string as stringRes
 import com.looker.core.common.R.style as styleRes
 
@@ -68,11 +64,6 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 
 	@Inject
 	lateinit var userPreferencesRepository: UserPreferencesRepository
-
-	private val initialPreference: Flow<UserPreferences>
-		get() = flow {
-			emit(userPreferencesRepository.fetchInitialPreferences())
-		}
 
 	private sealed interface State {
 		data class Connecting(val name: String) : State
@@ -97,8 +88,6 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 	private var started = Started.NO
 	private val tasks = mutableListOf<Task>()
 	private var currentTask: CurrentTask? = null
-
-	private var updateNotificationBlockerFragment: WeakReference<Fragment>? = null
 
 	private val downloadConnection = Connection(DownloadService::class.java)
 
@@ -140,15 +129,8 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 			}
 		}
 
-		fun updateAllApps() {
-			updateAllAppsInternal()
-		}
-
-		fun setUpdateNotificationBlocker(fragment: Fragment?) {
-			updateNotificationBlockerFragment = fragment?.let(::WeakReference)
-			if (fragment != null) {
-				notificationManager.cancel(Constants.NOTIFICATION_ID_UPDATES)
-			}
+		suspend fun updateAllApps() {
+			updateAppList()
 		}
 
 		fun setEnabled(repository: Repository, enabled: Boolean): Boolean {
@@ -274,7 +256,7 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 	private val stateNotificationBuilder by lazy {
 		NotificationCompat
 			.Builder(this, Constants.NOTIFICATION_CHANNEL_SYNCING)
-			.setSmallIcon(CommonR.drawable.ic_sync)
+			.setSmallIcon(R.drawable.ic_sync)
 			.setColor(
 				ContextThemeWrapper(this, styleRes.Theme_Main_Light)
 					.getColorFromAttr(android.R.attr.colorPrimary).defaultColor
@@ -376,7 +358,8 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 					val initialState = State.Connecting(repository.name)
 					publishForegroundState(true, initialState)
 					scope.launch {
-						val unstableUpdates = initialPreference.first().unstableUpdate
+						val unstableUpdates =
+							userPreferencesRepository.fetchInitialPreferences().unstableUpdate
 						handleFileDownload(
 							task = task,
 							initialState = initialState,
@@ -390,7 +373,7 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 				}
 			} else if (started != Started.NO) {
 				scope.launch {
-					val preference = initialPreference.first()
+					val preference = userPreferencesRepository.fetchInitialPreferences()
 					handleUpdates(
 						hasUpdates = hasUpdates,
 						notifyUpdates = preference.notifyUpdate,
@@ -409,22 +392,23 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 		repository: Repository
 	) {
 		val job = scope.launch {
-			val request = RepositoryUpdater.update(
-				this@SyncService,
-				repository,
-				unstableUpdates
-			) { stage, progress, total ->
-				launch {
-					mutableStateSubject.emit(
-						State.Syncing(
-							repository.name,
-							stage,
-							progress,
-							total
+			val request = RepositoryUpdater
+				.update(
+					this@SyncService,
+					repository,
+					unstableUpdates
+				) { stage, progress, total ->
+					launch {
+						mutableStateSubject.emit(
+							State.Syncing(
+								repository.name,
+								stage,
+								progress,
+								total
+							)
 						)
-					)
+					}
 				}
-			}
 			currentTask = null
 			when (request) {
 				Result.Loading -> {
@@ -451,20 +435,28 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 	) {
 		if (hasUpdates && notifyUpdates) {
 			val job = scope.launch {
-				val availableUpdate = Database.ProductAdapter.query(
-					installed = true,
-					updates = true,
-					searchQuery = "",
-					section = ProductItem.Section.All,
-					order = SortOrder.NAME,
-					signal = null
-				).use { it.asSequence().map(Database.ProductAdapter::transformItem).toList() }
+				val products = async {
+					Database.ProductAdapter
+						.query(
+							installed = true,
+							updates = true,
+							searchQuery = "",
+							section = ProductItem.Section.All,
+							order = SortOrder.NAME,
+							signal = null
+						)
+						.use {
+							it.asSequence().map(Database.ProductAdapter::transformItem).toList()
+						}
+				}
 				currentTask = null
 				handleNextTask(false)
-				val blocked = updateNotificationBlockerFragment?.get()?.isAdded == true
-				if (!blocked && availableUpdate.isNotEmpty()) {
+				if (autoUpdate) {
+					products.cancel()
+					updateAppList()
+				} else {
+					val availableUpdate = products.await()
 					displayUpdatesNotification(availableUpdate)
-					if (autoUpdate) updateAllAppsInternal()
 				}
 			}
 			currentTask = CurrentTask(null, job, true, State.Finishing)
@@ -481,20 +473,25 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 		}
 	}
 
-	private fun updateAllAppsInternal() {
-		val products = Database.ProductAdapter.query(
-			installed = true,
-			updates = true,
-			searchQuery = "",
-			section = ProductItem.Section.All,
-			order = SortOrder.NAME,
-			signal = null
-		).use { it.asSequence().map(Database.ProductAdapter::transformItem).toList() }
-		products
-			.map {
-				Database.InstalledAdapter.get(it.packageName, null) to
-						Database.RepositoryAdapter.get(it.repositoryId)
-			}
+	private suspend fun updateAppList() = withContext(Dispatchers.IO) {
+		val products = async {
+			Database.ProductAdapter
+				.query(
+					installed = true,
+					updates = true,
+					searchQuery = "",
+					section = ProductItem.Section.All,
+					order = SortOrder.NAME,
+					signal = null
+				)
+				.use {
+					it.asSequence().map(Database.ProductAdapter::transformItem).toList()
+				}
+		}
+		products.await().map {
+			Database.InstalledAdapter.get(it.packageName, null) to
+					Database.RepositoryAdapter.get(it.repositoryId)
+		}
 			.filter { it.first != null && it.second != null }
 			.forEach { (installItem, repo) ->
 				val productRepo = Database.ProductAdapter.get(installItem!!.packageName, null)
@@ -515,11 +512,11 @@ class SyncService : ConnectionService<SyncService.Binder>() {
 		notificationManager.notify(
 			Constants.NOTIFICATION_ID_UPDATES, NotificationCompat
 				.Builder(this, Constants.NOTIFICATION_CHANNEL_UPDATES)
-				.setSmallIcon(CommonR.drawable.ic_new_releases)
+				.setSmallIcon(R.drawable.ic_new_releases)
 				.setContentTitle(getString(stringRes.new_updates_available))
 				.setContentText(
 					resources.getQuantityString(
-						CommonR.plurals.new_updates_DESC_FORMAT,
+						R.plurals.new_updates_DESC_FORMAT,
 						productItems.size, productItems.size
 					)
 				)

@@ -1,9 +1,7 @@
 package com.looker.installer
 
 import android.content.Context
-import com.looker.core.common.Constants
 import com.looker.core.common.extension.filter
-import com.looker.core.common.extension.notificationManager
 import com.looker.core.datastore.UserPreferencesRepository
 import com.looker.core.datastore.model.InstallerType
 import com.looker.core.model.newer.PackageName
@@ -45,7 +43,6 @@ class Installer(
 				InstallerType.ROOT -> RootInstaller(context)
 			}
 		installer(
-			context = context,
 			baseInstaller = baseInstaller!!,
 			installItems = installItems,
 			installState = installState
@@ -72,33 +69,23 @@ class Installer(
 		uninstallItems.send(packageName)
 	}
 
-	operator fun get(packageName: String): Flow<InstallState> = installState
-		.filter { it.installedItem.packageName.name == packageName }
-		.map { it.state }
-
-	operator fun get(packageName: PackageName): Flow<InstallState> = installState
+	infix fun stateOf(packageName: PackageName): Flow<InstallState> = installState
 		.filter { it.installedItem.packageName == packageName }
 		.map { it.state }
 
 	private fun CoroutineScope.installer(
-		context: Context,
 		baseInstaller: BaseInstaller,
 		installItems: ReceiveChannel<InstallItem>,
 		installState: MutableStateFlow<InstallItemState>
 	) = launch {
 		val requested = mutableSetOf<String>()
 		filter(installItems) {
-			val isAdded = requested.add(it.packageName.name)
-			if (isAdded) installState.emit(it statesTo InstallState.Queued)
-			isAdded
+			installState.emit(it statesTo InstallState.Queued)
+			requested.add(it.packageName.name)
 		}.consumeEach {
 			installState.emit(it statesTo InstallState.Installing)
 			val success = baseInstaller.performInstall(it)
 			installState.emit(it statesTo success)
-			context.notificationManager.cancel(
-				"download-${it.packageName.name}",
-				Constants.NOTIFICATION_ID_DOWNLOADING
-			)
 			requested.remove(it.packageName.name)
 		}
 	}

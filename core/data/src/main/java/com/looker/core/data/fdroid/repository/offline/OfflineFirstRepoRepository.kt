@@ -4,18 +4,14 @@ import android.content.Context
 import com.looker.core.data.fdroid.model.allowUnstable
 import com.looker.core.data.fdroid.model.toEntity
 import com.looker.core.data.fdroid.repository.RepoRepository
-import com.looker.core.data.fdroid.sync.downloadIndexJar
-import com.looker.core.data.fdroid.sync.getFingerprint
 import com.looker.core.data.fdroid.sync.getIndexV1
 import com.looker.core.data.fdroid.sync.processRepos
-import com.looker.core.data.fdroid.sync.toLocation
 import com.looker.core.database.dao.AppDao
 import com.looker.core.database.dao.RepoDao
 import com.looker.core.database.model.RepoEntity
 import com.looker.core.database.model.toEntity
 import com.looker.core.database.model.toExternalModel
 import com.looker.core.model.newer.Repo
-import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -41,29 +37,9 @@ class OfflineFirstRepoRepository @Inject constructor(
 		repoDao.updateRepo(repo.copy(enabled = enable).toEntity())
 	}
 
-	override suspend fun sync(context: Context, repo: Repo, allowUnstable: Boolean): Boolean =
-		coroutineScope {
-			val repoLoc = downloadIndexJar(repo.toLocation(context))
-			val index = repoLoc.jar.getIndexV1()
-			val updatedRepo = index.repo.toEntity(
-				fingerPrint = repo.fingerprint,
-				etag = repo.etag,
-				username = repo.username,
-				password = repo.password
-			)
-			val packages = index.packages
-			val apps = index.apps.map {
-				it.toEntity(
-					repoId = repo.id,
-					packages = packages[it.packageName]
-						?.allowUnstable(it, allowUnstable)
-						?: emptyList()
-				)
-			}
-			repoDao.updateRepo(updatedRepo)
-			appDao.upsertApps(apps)
-			true
-		}
+	override suspend fun sync(context: Context, repo: Repo, allowUnstable: Boolean): Boolean {
+		TODO("Not yet implemented")
+	}
 
 	override suspend fun syncAll(context: Context, allowUnstable: Boolean): Boolean =
 		coroutineScope {
@@ -72,22 +48,21 @@ class OfflineFirstRepoRepository @Inject constructor(
 			val repoChannel = Channel<Repo>()
 			processRepos(context, repoChannel) { repo, jar ->
 				val index = jar.getIndexV1()
-				val newFingerprint = async { jar.getFingerprint() }
 				val updatedRepo = index.repo.toEntity(
-					fingerPrint = repo.fingerprint.ifEmpty { newFingerprint.await() },
+					fingerPrint = repo.fingerprint,
 					etag = repo.etag,
 					username = repo.username,
 					password = repo.password
 				)
 				val packages = index.packages
-				val apps = index.apps.map {
-					it.toEntity(
-						repoId = repo.id,
-						packages = packages[it.packageName]
-							?.allowUnstable(it, allowUnstable)
-							?: emptyList()
-					)
-				}
+				val apps =
+					index.apps.map {
+						it.toEntity(
+							repoId = repo.id,
+							packages = packages[it.packageName]?.allowUnstable(it, allowUnstable)
+								?: emptyList()
+						)
+					}
 				repoDao.updateRepo(updatedRepo)
 				appDao.upsertApps(apps)
 			}
