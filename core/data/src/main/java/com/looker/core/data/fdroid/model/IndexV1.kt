@@ -1,4 +1,4 @@
-package com.looker.core.data.fdroid.model
+package com.leos.core.data.fdroid.model
 
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable

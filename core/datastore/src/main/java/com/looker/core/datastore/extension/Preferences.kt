@@ -1,15 +1,15 @@
-package com.looker.core.datastore.extension
+package com.leos.core.datastore.extension
 
 import android.content.Context
 import android.content.res.Configuration
-import com.looker.core.common.SdkCheck
-import com.looker.core.datastore.model.AutoSync
-import com.looker.core.datastore.model.InstallerType
-import com.looker.core.datastore.model.ProxyType
-import com.looker.core.datastore.model.SortOrder
-import com.looker.core.datastore.model.Theme
-import com.looker.core.common.R.string as stringRes
-import com.looker.core.common.R.style as styleRes
+import com.leos.core.common.SdkCheck
+import com.leos.core.datastore.model.AutoSync
+import com.leos.core.datastore.model.InstallerType
+import com.leos.core.datastore.model.ProxyType
+import com.leos.core.datastore.model.SortOrder
+import com.leos.core.datastore.model.Theme
+import com.leos.core.common.R.string as stringRes
+import com.leos.core.common.R.style as styleRes
 
 fun Context?.themeName(theme: Theme) = this?.let {
 	when (theme) {

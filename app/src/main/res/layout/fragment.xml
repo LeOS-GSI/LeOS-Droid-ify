@@ -13,7 +13,7 @@
         android:background="?colorSurface"
         app:elevation="0dp"
         app:liftOnScroll="false"
-        app:layout_behavior="com.looker.core.common.view.CustomCollapsingBehaviour">
+        app:layout_behavior="com.leos.core.common.view.CustomCollapsingBehaviour">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"

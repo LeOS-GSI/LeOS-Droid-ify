@@ -1,4 +1,4 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import kotlinx.coroutines.suspendCancellableCoroutine
 import okhttp3.Call

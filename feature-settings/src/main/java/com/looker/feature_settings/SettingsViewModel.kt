@@ -1,4 +1,4 @@
-package com.looker.feature_settings
+package com.leos.feature_settings
 
 import android.content.pm.PackageManager
 import android.util.Log
@@ -6,11 +6,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.looker.core.datastore.UserPreferencesRepository
-import com.looker.core.datastore.model.AutoSync
-import com.looker.core.datastore.model.InstallerType
-import com.looker.core.datastore.model.ProxyType
-import com.looker.core.datastore.model.Theme
+import com.leos.core.datastore.UserPreferencesRepository
+import com.leos.core.datastore.model.AutoSync
+import com.leos.core.datastore.model.InstallerType
+import com.leos.core.datastore.model.ProxyType
+import com.leos.core.datastore.model.Theme
 import com.topjohnwu.superuser.Shell
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.looker.core.model
+package com.leos.core.model
 
 class InstalledItem(
 	val packageName: String,

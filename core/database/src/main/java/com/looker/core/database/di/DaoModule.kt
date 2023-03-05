@@ -1,8 +1,8 @@
-package com.looker.core.database.di
+package com.leos.core.database.di
 
-import com.looker.core.database.DroidifyDatabase
-import com.looker.core.database.dao.AppDao
-import com.looker.core.database.dao.RepoDao
+import com.leos.core.database.DroidifyDatabase
+import com.leos.core.database.dao.AppDao
+import com.leos.core.database.dao.RepoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

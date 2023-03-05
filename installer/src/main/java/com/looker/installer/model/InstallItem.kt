@@ -1,7 +1,7 @@
-package com.looker.installer.model
+package com.leos.installer.model
 
-import com.looker.core.model.newer.PackageName
-import com.looker.core.model.newer.toPackageName
+import com.leos.core.model.newer.PackageName
+import com.leos.core.model.newer.toPackageName
 
 data class InstallItem(
 	val packageName: PackageName,

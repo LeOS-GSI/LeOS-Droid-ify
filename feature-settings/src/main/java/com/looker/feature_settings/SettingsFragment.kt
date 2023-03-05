@@ -1,4 +1,4 @@
-package com.looker.feature_settings
+package com.leos.feature_settings
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -24,31 +24,31 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.looker.core.common.SdkCheck
-import com.looker.core.common.extension.getDrawableFromAttr
-import com.looker.core.common.extension.setCollapsable
-import com.looker.core.common.extension.systemBarsPadding
-import com.looker.core.datastore.UserPreferences
-import com.looker.core.datastore.extension.autoSyncName
-import com.looker.core.datastore.extension.installerName
-import com.looker.core.datastore.extension.proxyName
-import com.looker.core.datastore.extension.themeName
-import com.looker.core.datastore.model.AutoSync
-import com.looker.core.datastore.model.InstallerType
-import com.looker.core.datastore.model.ProxyType
-import com.looker.core.datastore.model.Theme
-import com.looker.feature_settings.databinding.SettingsPageBinding
+import com.leos.core.common.SdkCheck
+import com.leos.core.common.extension.getDrawableFromAttr
+import com.leos.core.common.extension.setCollapsable
+import com.leos.core.common.extension.systemBarsPadding
+import com.leos.core.datastore.UserPreferences
+import com.leos.core.datastore.extension.autoSyncName
+import com.leos.core.datastore.extension.installerName
+import com.leos.core.datastore.extension.proxyName
+import com.leos.core.datastore.extension.themeName
+import com.leos.core.datastore.model.AutoSync
+import com.leos.core.datastore.model.InstallerType
+import com.leos.core.datastore.model.ProxyType
+import com.leos.core.datastore.model.Theme
+import com.leos.feature_settings.databinding.SettingsPageBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
-import com.looker.core.common.BuildConfig as LocaleConfig
-import com.looker.core.common.R.dimen as dimenRes
-import com.looker.core.common.R.drawable as drawableRes
-import com.looker.core.common.R.plurals as pluralRes
-import com.looker.core.common.R.string as stringRes
+import com.leos.core.common.BuildConfig as LocaleConfig
+import com.leos.core.common.R.dimen as dimenRes
+import com.leos.core.common.R.drawable as drawableRes
+import com.leos.core.common.R.plurals as pluralRes
+import com.leos.core.common.R.string as stringRes
 
 @AndroidEntryPoint
 class SettingsFragment : Fragment() {
@@ -100,9 +100,9 @@ class SettingsFragment : Fragment() {
 			proxyHost.title.text = getString(stringRes.proxy_host)
 			proxyPort.title.text = getString(stringRes.proxy_port)
 			installer.title.text = getString(stringRes.installer)
-			creditFoxy.title.text = "Based on Foxy Droid"
+			creditFoxy.title.text = "Based on Droid-ify / Foxy Droid "
 			creditFoxy.content.text = "FoxyDroid"
-			droidify.title.text = "Droid-ify"
+			droidify.title.text = "LeOS-Droid"
 			droidify.content.text = BuildConfig.VERSION_NAME
 		}
 		viewLifecycleOwner.lifecycleScope.launch {

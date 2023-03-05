@@ -1,4 +1,4 @@
-package com.looker.core.data.fdroid.sync.workers
+package com.leos.core.data.fdroid.sync.workers
 
 import android.content.Context
 import androidx.hilt.work.HiltWorkerFactory

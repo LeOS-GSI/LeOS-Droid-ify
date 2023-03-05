@@ -1,7 +1,7 @@
-package com.looker.installer
+package com.leos.installer
 
 import android.content.Context
-import com.looker.core.datastore.UserPreferencesRepository
+import com.leos.core.datastore.UserPreferencesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

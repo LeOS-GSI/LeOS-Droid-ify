@@ -1,6 +1,6 @@
-package com.looker.core.data.fdroid.sync
+package com.leos.core.data.fdroid.sync
 
-import com.looker.core.data.fdroid.model.IndexV1
+import com.leos.core.data.fdroid.model.IndexV1
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.jar.JarEntry
 import java.util.jar.JarFile

@@ -1,10 +1,10 @@
-package com.looker.core.model
+package com.leos.core.model
 
 import android.os.Parcel
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.core.JsonParser
-import com.looker.core.common.file.KParcelable
-import com.looker.core.common.extension.forEachKey
+import com.leos.core.common.file.KParcelable
+import com.leos.core.common.extension.forEachKey
 
 data class ProductItem(
 	var repositoryId: Long, var packageName: String, var name: String, var summary: String,

@@ -1,4 +1,4 @@
-package com.looker.core.common
+package com.leos.core.common
 
 object Constants {
 	const val NOTIFICATION_CHANNEL_SYNCING = "syncing"

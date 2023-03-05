@@ -1,8 +1,8 @@
-package com.looker.core.data.fdroid.sync
+package com.leos.core.data.fdroid.sync
 
 import android.content.Context
-import com.looker.core.common.cache.Cache
-import com.looker.core.model.newer.Repo
+import com.leos.core.common.cache.Cache
+import com.leos.core.model.newer.Repo
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.okhttp.OkHttp

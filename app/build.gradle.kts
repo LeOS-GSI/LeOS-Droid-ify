@@ -7,7 +7,7 @@ plugins {
 
 android {
 	compileSdk = Android.compileSdk
-	namespace = "com.looker.droidify"
+	namespace = "com.leos.droidify"
 	defaultConfig {
 		applicationId = Android.appId
 		minSdk = Android.minSdk

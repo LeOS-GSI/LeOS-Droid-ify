@@ -1,4 +1,4 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import android.app.NotificationManager
 import android.content.Context
@@ -9,7 +9,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import com.looker.core.common.nullIfEmpty
+import com.leos.core.common.nullIfEmpty
 
 inline val Context.notificationManager: NotificationManager
 	get() = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

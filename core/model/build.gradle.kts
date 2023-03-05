@@ -5,7 +5,7 @@ plugins {
 
 android {
 	compileSdk = Android.compileSdk
-	namespace = "com.looker.core.model"
+	namespace = "com.leos.core.model"
 	defaultConfig {
 		minSdk = Android.minSdk
 	}

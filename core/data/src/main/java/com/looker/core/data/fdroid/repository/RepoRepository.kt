@@ -1,7 +1,7 @@
-package com.looker.core.data.fdroid.repository
+package com.leos.core.data.fdroid.repository
 
 import android.content.Context
-import com.looker.core.model.newer.Repo
+import com.leos.core.model.newer.Repo
 import kotlinx.coroutines.flow.Flow
 
 interface RepoRepository {

@@ -1,13 +1,13 @@
-package com.looker.core.database
+package com.leos.core.database
 
 import androidx.room.BuiltInTypeConverters
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.looker.core.database.dao.AppDao
-import com.looker.core.database.dao.RepoDao
-import com.looker.core.database.model.AppEntity
-import com.looker.core.database.model.RepoEntity
+import com.leos.core.database.dao.AppDao
+import com.leos.core.database.dao.RepoDao
+import com.leos.core.database.model.AppEntity
+import com.leos.core.database.model.RepoEntity
 
 @Database(
 	version = 1,

@@ -9,7 +9,7 @@ plugins {
 
 android {
 	compileSdk = Android.compileSdk
-	namespace = "com.looker.core.database"
+	namespace = "com.leos.core.database"
 	defaultConfig {
 		minSdk = Android.minSdk
 

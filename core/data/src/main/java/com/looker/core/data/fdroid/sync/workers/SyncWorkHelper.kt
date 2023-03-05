@@ -1,4 +1,4 @@
-package com.looker.core.data.fdroid.sync.workers
+package com.leos.core.data.fdroid.sync.workers
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -6,8 +6,8 @@ import android.app.NotificationManager
 import android.content.Context
 import androidx.core.app.NotificationCompat
 import androidx.work.ForegroundInfo
-import com.looker.core.common.SdkCheck
-import com.looker.core.common.R as CommonR
+import com.leos.core.common.SdkCheck
+import com.leos.core.common.R as CommonR
 
 private const val SyncNotificationID = 12
 private const val SyncNotificationChannelID = "SyncNotificationChannelID"

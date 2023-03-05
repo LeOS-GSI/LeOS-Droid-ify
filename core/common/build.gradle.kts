@@ -7,7 +7,7 @@ plugins {
 
 android {
 	compileSdk = Android.compileSdk
-	namespace = "com.looker.core.common"
+	namespace = "com.leos.core.common"
 	defaultConfig {
 		minSdk = Android.minSdk
 		vectorDrawables.useSupportLibrary = true

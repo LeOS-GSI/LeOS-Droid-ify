@@ -1,4 +1,4 @@
-package com.looker.installer.model
+package com.leos.installer.model
 
 sealed interface InstallState {
 

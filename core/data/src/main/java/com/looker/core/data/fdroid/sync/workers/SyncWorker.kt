@@ -1,4 +1,4 @@
-package com.looker.core.data.fdroid.sync.workers
+package com.leos.core.data.fdroid.sync.workers
 
 import android.content.Context
 import android.util.Log
@@ -14,8 +14,8 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import com.looker.core.data.fdroid.repository.RepoRepository
-import com.looker.core.datastore.UserPreferencesRepository
+import com.leos.core.data.fdroid.repository.RepoRepository
+import com.leos.core.datastore.UserPreferencesRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import java.util.concurrent.TimeUnit

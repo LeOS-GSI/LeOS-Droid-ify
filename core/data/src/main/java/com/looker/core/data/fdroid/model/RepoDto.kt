@@ -1,6 +1,6 @@
-package com.looker.core.data.fdroid.model
+package com.leos.core.data.fdroid.model
 
-import com.looker.core.database.model.RepoEntity
+import com.leos.core.database.model.RepoEntity
 import kotlinx.serialization.Serializable
 
 @Serializable

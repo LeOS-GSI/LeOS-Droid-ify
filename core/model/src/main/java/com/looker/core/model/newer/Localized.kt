@@ -1,4 +1,4 @@
-package com.looker.core.model.newer
+package com.leos.core.model.newer
 
 data class Localized(
 	val description: String,

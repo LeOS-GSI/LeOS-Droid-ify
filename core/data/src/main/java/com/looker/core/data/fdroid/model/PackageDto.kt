@@ -1,7 +1,7 @@
-package com.looker.core.data.fdroid.model
+package com.leos.core.data.fdroid.model
 
-import com.looker.core.database.model.PackageEntity
-import com.looker.core.database.model.PermissionEntity
+import com.leos.core.database.model.PackageEntity
+import com.leos.core.database.model.PermissionEntity
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName

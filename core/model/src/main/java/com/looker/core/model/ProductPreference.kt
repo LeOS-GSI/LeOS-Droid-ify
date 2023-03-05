@@ -1,8 +1,8 @@
-package com.looker.core.model
+package com.leos.core.model
 
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.core.JsonParser
-import com.looker.core.common.extension.forEachKey
+import com.leos.core.common.extension.forEachKey
 
 data class ProductPreference(val ignoreUpdates: Boolean, val ignoreVersionCode: Long) {
 	fun shouldIgnoreUpdate(versionCode: Long): Boolean {

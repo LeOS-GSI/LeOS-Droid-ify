@@ -1,13 +1,13 @@
-package com.looker.core.database.model
+package com.leos.core.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import com.looker.core.model.newer.App
-import com.looker.core.model.newer.Author
-import com.looker.core.model.newer.Donate
-import com.looker.core.model.newer.Localized
-import com.looker.core.model.newer.Metadata
-import com.looker.core.model.newer.toPackageName
+import com.leos.core.model.newer.App
+import com.leos.core.model.newer.Author
+import com.leos.core.model.newer.Donate
+import com.leos.core.model.newer.Localized
+import com.leos.core.model.newer.Metadata
+import com.leos.core.model.newer.toPackageName
 import kotlinx.serialization.Serializable
 
 @Entity(tableName = "apps", primaryKeys = ["repoId", "packageName"])

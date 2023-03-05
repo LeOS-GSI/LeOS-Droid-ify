@@ -1,15 +1,15 @@
-package com.looker.core.data.fdroid.repository.offline
+package com.leos.core.data.fdroid.repository.offline
 
-import com.looker.core.data.fdroid.repository.AppRepository
-import com.looker.core.database.dao.AppDao
-import com.looker.core.database.model.AppEntity
-import com.looker.core.database.model.PackageEntity
-import com.looker.core.database.model.toExternalModel
-import com.looker.core.datastore.UserPreferencesRepository
-import com.looker.core.model.newer.App
-import com.looker.core.model.newer.Author
-import com.looker.core.model.newer.Package
-import com.looker.core.model.newer.PackageName
+import com.leos.core.data.fdroid.repository.AppRepository
+import com.leos.core.database.dao.AppDao
+import com.leos.core.database.model.AppEntity
+import com.leos.core.database.model.PackageEntity
+import com.leos.core.database.model.toExternalModel
+import com.leos.core.datastore.UserPreferencesRepository
+import com.leos.core.model.newer.App
+import com.leos.core.model.newer.Author
+import com.leos.core.model.newer.Package
+import com.leos.core.model.newer.PackageName
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

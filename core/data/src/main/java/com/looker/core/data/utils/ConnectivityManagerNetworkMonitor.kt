@@ -1,4 +1,4 @@
-package com.looker.core.data.utils
+package com.leos.core.data.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

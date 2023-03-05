@@ -1,12 +1,12 @@
-package com.looker.core.database.dao
+package com.leos.core.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Upsert
-import com.looker.core.database.model.AppEntity
-import com.looker.core.database.model.PackageEntity
+import com.leos.core.database.model.AppEntity
+import com.leos.core.database.model.PackageEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

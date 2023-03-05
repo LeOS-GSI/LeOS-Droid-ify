@@ -23,7 +23,7 @@
         android:allowBackup="true"
         android:banner="@drawable/tv_banner"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/application_name"
+        android:label="LeOS-Droid"
         android:localeConfig="@xml/locales_config"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
@@ -113,7 +113,7 @@
         <service android:name=".service.DownloadService" />
 
         <service
-            android:name="com.looker.installer.installers.SessionInstallerService"
+            android:name="com.leos.installer.installers.SessionInstallerService"
             android:exported="false" />
 
         <service
@@ -134,7 +134,7 @@
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
         <provider
-            android:name="com.looker.core.common.cache.Cache$Provider"
+            android:name="com.leos.core.common.cache.Cache$Provider"
             android:authorities="${applicationId}.provider.cache"
             android:exported="false"
             android:grantUriPermissions="true" />

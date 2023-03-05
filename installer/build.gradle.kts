@@ -7,7 +7,7 @@ plugins {
 
 android {
 	compileSdk = Android.compileSdk
-	namespace = "com.looker.installer"
+	namespace = "com.leos.installer"
 	defaultConfig {
 		minSdk = Android.minSdk
 	}

@@ -1,9 +1,9 @@
-package com.looker.core.database
+package com.leos.core.database
 
 import androidx.room.TypeConverter
-import com.looker.core.database.model.LocalizedEntity
-import com.looker.core.database.model.PackageEntity
-import com.looker.core.database.model.PermissionEntity
+import com.leos.core.database.model.LocalizedEntity
+import com.leos.core.database.model.PackageEntity
+import com.leos.core.database.model.PermissionEntity
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.MapSerializer
 import kotlinx.serialization.builtins.serializer

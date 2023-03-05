@@ -1,4 +1,4 @@
-package com.looker.core.data.fdroid.sync
+package com.leos.core.data.fdroid.sync
 
 import java.util.jar.JarFile
 

@@ -1,8 +1,8 @@
-package com.looker.core.database.model
+package com.leos.core.database.model
 
-import com.looker.core.model.newer.Package
-import com.looker.core.model.newer.Permission
-import com.looker.core.model.newer.toPackageName
+import com.leos.core.model.newer.Package
+import com.leos.core.model.newer.Permission
+import com.leos.core.model.newer.toPackageName
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable

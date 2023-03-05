@@ -1,4 +1,4 @@
-package com.looker.core.common.device
+package com.leos.core.common.device
 
 object Huawei {
 	val isHuaweiEmui: Boolean

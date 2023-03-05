@@ -1,4 +1,4 @@
-package com.looker.core.common.view
+package com.leos.core.common.view
 
 import android.content.Context
 import android.util.AttributeSet

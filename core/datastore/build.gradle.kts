@@ -7,7 +7,7 @@ plugins {
 
 android {
 	compileSdk = Android.compileSdk
-	namespace = "com.looker.core.datastore"
+	namespace = "com.leos.core.datastore"
 	defaultConfig {
 		minSdk = Android.minSdk
 	}

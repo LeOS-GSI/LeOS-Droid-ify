@@ -1,10 +1,10 @@
-package com.looker.core.model
+package com.leos.core.model
 
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.core.JsonParser
-import com.looker.core.common.extension.collectNotNullStrings
-import com.looker.core.common.extension.forEachKey
-import com.looker.core.common.extension.writeArray
+import com.leos.core.common.extension.collectNotNullStrings
+import com.leos.core.common.extension.forEachKey
+import com.leos.core.common.extension.writeArray
 import java.net.URL
 
 data class Repository(
@@ -137,7 +137,7 @@ data class Repository(
 				"LeOS ungooled Apps",
 				"The respository includes goolge and trackerfree FOSS apps ",
 				21,
-				false,
+				true,
 				"AA397AA3D66DE4AF62EBEF240C8DF60D508F5DA3080F79A7EAB97A48DCE2CE7D",
 				""
 			)
@@ -184,12 +184,6 @@ data class Repository(
 						"repositories (mostly GitHub). At this moment I cannot give guarantees on regular updates for all of them, " +
 						"though most are checked multiple times a week ", 21, true,
 				"3BF0D6ABFEAE2F401707B6D966BE743BF0EEE49C2561B9BA39073711F628937A", ""
-			)
-		}, run {
-			defaultRepository(
-				"https://microg.org/fdroid/repo", "MicroG Project",
-				"The official repository for MicroG. MicroG is a lightweight open-source implementation of Google Play Services.",
-				21, false, "9BD06727E62796C0130EB6DAB39B73157451582CBD138E86C468ACC395D14165", ""
 			)
 		}, run {
 			defaultRepository(

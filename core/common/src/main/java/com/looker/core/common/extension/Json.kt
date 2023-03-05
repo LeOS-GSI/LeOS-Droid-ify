@@ -1,4 +1,4 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import com.fasterxml.jackson.core.JsonFactory
 import com.fasterxml.jackson.core.JsonGenerator

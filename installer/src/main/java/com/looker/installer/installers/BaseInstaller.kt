@@ -1,8 +1,8 @@
-package com.looker.installer.installers
+package com.leos.installer.installers
 
-import com.looker.core.model.newer.PackageName
-import com.looker.installer.model.InstallItem
-import com.looker.installer.model.InstallState
+import com.leos.core.model.newer.PackageName
+import com.leos.installer.model.InstallItem
+import com.leos.installer.model.InstallState
 
 interface BaseInstaller {
 
