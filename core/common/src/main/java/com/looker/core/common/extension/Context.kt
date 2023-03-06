@@ -9,6 +9,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.leos.core.common.R
 import com.leos.core.common.nullIfEmpty
 
 inline val Context.notificationManager: NotificationManager
@@ -34,25 +35,30 @@ fun Context.getDrawableFromAttr(attrResId: Int): Drawable {
 	return getDrawableCompat(resId)
 }
 
-fun Context.getDrawableCompat(@DrawableRes resId: Int): Drawable =
+fun Context.getDrawableCompat(@DrawableRes resId: Int = R.drawable.background_border): Drawable =
 	ResourcesCompat.getDrawable(resources, resId, theme) ?: ContextCompat.getDrawable(this, resId)!!
 
 fun Intent.getPackageName(): String? {
-	val uri = data ?: return null
-	val scheme = uri.scheme ?: return null
-	val host = uri.host ?: return null
+	val uri = data
 	return when {
-		scheme == "package" || scheme == "fdroid.app" -> {
+		uri?.scheme == "package" || uri?.scheme == "fdroid.app" -> {
 			uri.schemeSpecificPart?.nullIfEmpty()
 		}
-		scheme == "market" && uri.host == "details" -> {
+		uri?.scheme == "market" && uri.host == "details" -> {
 			uri.getQueryParameter("id")?.nullIfEmpty()
 		}
-		uri.scheme in setOf("http", "https") -> {
-			if (host == "f-droid.org" || host.endsWith(".f-droid.org") || host == "apt.izzysoft.de") {
+		uri != null && uri.scheme in setOf("http", "https") -> {
+			val host = uri.host.orEmpty()
+			if (host == "f-droid.org" || host.endsWith(".f-droid.org")) {
 				uri.lastPathSegment?.nullIfEmpty()
-			} else null
+			} else if (host == "apt.izzysoft.de") {
+				uri.lastPathSegment?.nullIfEmpty()
+			} else {
+				null
+			}
 		}
-		else -> null
+		else -> {
+			null
+		}
 	}
 }
