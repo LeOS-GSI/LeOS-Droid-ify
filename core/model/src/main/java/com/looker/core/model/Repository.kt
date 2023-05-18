@@ -133,12 +133,12 @@ data class Repository(
 			)
 		}, run {
 			defaultRepository(
-				"https://raw.githubusercontent.com/LeOS-GSI/repo/master/fdroid/repo",
+				"https://gitlab.com/harvey186/apps/-/raw/master/fdroid/repo",
 				"LeOS ungooled Apps",
 				"The respository includes goolge and trackerfree FOSS apps ",
 				21,
 				true,
-				"AA397AA3D66DE4AF62EBEF240C8DF60D508F5DA3080F79A7EAB97A48DCE2CE7D",
+				"020480A56FD52E6358FAFEFACE2261FFCFD5C6962B245B0244C9257EEFBDFF5C",
 				""
 			)
 		}, run {
