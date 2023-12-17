@@ -202,7 +202,7 @@
     <string name="auto_update">Автоматично актуализиране на приложения</string>
     <string name="installing">Инсталиране</string>
     <string name="auto_update_apps">Опитайте се да инсталирате актуализации автоматично</string>
-    <string name="restart_app">Рестартирайте Droid-ify, за да видите промените</string>
+    <string name="restart_app">Рестартирайте LeOS-Droid, за да видите промените</string>
     <string name="waiting_to_start_installation">Изчакване за стартиране на инсталацията…</string>
     <string name="favourites">Любими</string>
     <string name="enable_repo">Активирайте хранилището</string>

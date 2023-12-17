@@ -76,12 +76,12 @@ android {
     buildTypes {
         getByName("debug") {
             applicationIdSuffix = ".debug"
-            resValue("string", "application_name", "Droid-ify-Debug")
+            resValue("string", "application_name", "LeOS-Droid-Debug")
         }
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
-            resValue("string", "application_name", "Droid-ify")
+            resValue("string", "application_name", "LeOS-Droid")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard.pro"
@@ -90,7 +90,7 @@ android {
         create("alpha") {
             initWith(getByName("debug"))
             applicationIdSuffix = ".alpha"
-            resValue("string", "application_name", "Droid-ify Alpha")
+            resValue("string", "application_name", "LeOS-Droid Alpha")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard.pro"
@@ -102,7 +102,7 @@ android {
             buildConfigField(
                 type = "String",
                 name = "VERSION_NAME",
-                value = "\"v${DefaultConfig.versionName}\""
+                value = "\"v1.6.4\""
             )
         }
     }

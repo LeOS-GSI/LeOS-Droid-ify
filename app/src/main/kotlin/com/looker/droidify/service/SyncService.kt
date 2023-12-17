@@ -493,7 +493,7 @@ class SyncService : ConnectionService<SyncService.Binder>() {
     private suspend fun updateAllAppsInternal() {
         Database.ProductAdapter
             .getUpdates()
-            // Update Droid-ify the last
+            // Update LeOS-Doid the last
             .sortedBy { if (it.packageName == packageName) 1 else -1 }
             .map {
                 Database.InstalledAdapter.get(it.packageName, null) to

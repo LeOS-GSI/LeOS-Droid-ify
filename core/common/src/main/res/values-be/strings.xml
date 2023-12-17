@@ -80,7 +80,7 @@
     <string name="installing">Ўсталяванне</string>
     <string name="incompatible_platforms_DESC_FORMAT">Ваша платформа %1$s не падтрымліваецца. Падтрымліваюцца платформы: %2$s.</string>
     <string name="repository_unreachable">Рэпазітар недасяжны</string>
-    <string name="restart_app">Перазапусціце Droid-ify, каб убачыць змены</string>
+    <string name="restart_app">Перазапусціце LeOS-Droid, каб убачыць змены</string>
     <string name="incompatible_features_DESC">Адсутныя функцыі.</string>
     <string name="no_applications_available">Няма даступных прыкладанняў</string>
     <string name="password_missing">Пароль адсутнічае</string>

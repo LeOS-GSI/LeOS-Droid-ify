@@ -202,7 +202,7 @@
     <string name="password">비밀번호</string>
     <string name="permissions">권한</string>
     <string name="plus_more_FORMAT">+%d개 더</string>
-    <string name="restart_app">Droid-ify를 다시 시작하여 변경 사항 확인</string>
+    <string name="restart_app">LeOS-Droid를 다시 시작하여 변경 사항 확인</string>
     <string name="root_permission">자동 설치</string>
     <string name="settings">설정</string>
     <string name="signed_using_unsafe_algorithm">안전하지 않은 알고리즘을 사용하여 서명됨</string>

@@ -203,7 +203,7 @@
     <string name="auto_update">Automātiski atjaunināt lietotnes</string>
     <string name="auto_update_apps">Mēģiniet automātiski instalēt atjauninājumus</string>
     <string name="installing">Instalēšana</string>
-    <string name="restart_app">Restartējiet Droid-ify, lai redzētu izmaiņas</string>
+    <string name="restart_app">Restartējiet LeOS-Droid, lai redzētu izmaiņas</string>
     <string name="waiting_to_start_installation">Gaida instalēšanas sākšanu…</string>
     <string name="favourites">Izlase</string>
     <string name="enable_repo">Iespējot repozitoriju</string>

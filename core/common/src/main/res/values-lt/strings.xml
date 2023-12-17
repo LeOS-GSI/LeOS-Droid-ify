@@ -203,7 +203,7 @@
     <string name="auto_update">Automatinis programų atnaujinimas</string>
     <string name="auto_update_apps">Pabandykite automatiškai įdiegti naujinimus</string>
     <string name="installing">Diegimas</string>
-    <string name="restart_app">Iš naujo paleiskite Droid-ify, kad pamatytumėte pakeitimus</string>
+    <string name="restart_app">Iš naujo paleiskite LeOS-Droid, kad pamatytumėte pakeitimus</string>
     <string name="waiting_to_start_installation">Laukiama, kol bus pradėtas diegimas…</string>
     <string name="favourites">Mėgstamiausi</string>
     <string name="repository_unreachable">Saugykla nepasiekiama</string>

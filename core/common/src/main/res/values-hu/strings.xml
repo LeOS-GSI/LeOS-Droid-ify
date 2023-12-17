@@ -199,7 +199,7 @@
     <string name="no_internet">Nincs internet-hozzáférés</string>
     <string name="auto_update_apps">Próbálja automatikusan telepíteni a frissítéseket</string>
     <string name="installing">Telepítés…</string>
-    <string name="restart_app">Indítsa újra a Droid-ify-t a változások megtekintéséhez</string>
+    <string name="restart_app">Indítsa újra a LeOS-Droid-t a változások megtekintéséhez</string>
     <string name="waiting_to_start_installation">Várakozás a telepítés megkezdésére …</string>
     <string name="favourites">Kedvencek</string>
     <string name="force_clean_up_DESC">Eltakarítja a redundáns fájlokat</string>

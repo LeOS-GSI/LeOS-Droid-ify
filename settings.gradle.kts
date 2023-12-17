@@ -15,7 +15,7 @@ dependencyResolutionManagement {
 	}
 }
 
-rootProject.name = "Droid-ify"
+rootProject.name = "LeOS-Droid"
 include(
 	":app",
 	":core:common",

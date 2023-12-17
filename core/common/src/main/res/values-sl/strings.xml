@@ -211,7 +211,7 @@
     <string name="enable_repo">Aktiviraj skladišče</string>
     <string name="force_clean_up_DESC">Odstrani podvojene datoteke</string>
     <string name="installing">Nameščanje</string>
-    <string name="restart_app">Znova zaženite Droid-ify, da vidite spremembe</string>
+    <string name="restart_app">Znova zaženite LeOS-Droid, da vidite spremembe</string>
     <string name="waiting_to_start_installation">Čakanje na začetek namestitve …</string>
     <string name="auto_update">Samodejno posodobite aplikacije</string>
     <string name="auto_update_apps">Poskusite samodejno namestiti posodobitve</string>
