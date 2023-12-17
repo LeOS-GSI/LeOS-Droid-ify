@@ -1,19 +1,19 @@
-package com.leos.core.data.fdroid.repository
+package com.looker.core.data.fdroid.repository
 
-import android.content.Context
-import com.leos.core.model.newer.Repo
+import com.looker.core.domain.newer.Repo
 import kotlinx.coroutines.flow.Flow
 
 interface RepoRepository {
 
-	fun getRepos(): Flow<List<Repo>>
+    suspend fun getRepo(id: Long): Repo
 
-	suspend fun updateRepo(repo: Repo): Boolean
+    fun getRepos(): Flow<List<Repo>>
 
-	suspend fun enableRepository(repo: Repo, enable: Boolean)
+    suspend fun updateRepo(repo: Repo)
 
-	suspend fun sync(context: Context, repo: Repo, allowUnstable: Boolean): Boolean
+    suspend fun enableRepository(repo: Repo, enable: Boolean)
 
-	suspend fun syncAll(context: Context, allowUnstable: Boolean): Boolean
+    suspend fun sync(repo: Repo): Boolean
 
+    suspend fun syncAll(): Boolean
 }
