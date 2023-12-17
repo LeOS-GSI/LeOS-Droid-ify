@@ -1,7 +1,7 @@
-package com.leos.core.datastore.model
+package com.looker.core.datastore.model
 
 enum class ProxyType {
-	DIRECT,
-	HTTP,
-	SOCKS
+    DIRECT,
+    HTTP,
+    SOCKS
 }

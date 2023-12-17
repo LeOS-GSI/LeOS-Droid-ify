@@ -186,9 +186,9 @@
     <string name="new_applications">Jaunas aplikācijas</string>
     <string name="action_failed">Darbība neizdevās</string>
     <string name="cant_edit_sync_DESC">Nevar rediģēt repozitoriju, jo tas pašlaik tiek sinhronizēts.</string>
-    <string name="cleanup_title">Tīrīšanas ilgums</string>
+    <string name="cleanup_title">APK cleanup interval</string>
     <string name="could_not_download_FORMAT">Nevarēja lejupielādēt %s</string>
-    <string name="cleanup_description">Laiks, kas nepieciešams tīrīšanai, lai veiktu atkārtotu pārbaudi</string>
+    <string name="cleanup_description">Period to check and remove downloaded files</string>
     <string name="delete_repository_DESC">Vai dzēst repozitoriju\?</string>
     <string name="details">Sīkāka informācija</string>
     <string name="incompatible_older_DESC">Šī versija ir vecāka par jūsu ierīcē instalēto. Vispirms atinstalējiet to.</string>
@@ -200,4 +200,16 @@
     <string name="io_error_DESC">Nespēj veikt noteiktas darbības.</string>
     <string name="allow_collapsing_toolbar_DESC">Ļaujiet augšējā lietotņu joslā paplašināties un sabrukt</string>
     <string name="no_internet">Jums nav interneta savienojuma</string>
+    <string name="auto_update">Automātiski atjaunināt lietotnes</string>
+    <string name="auto_update_apps">Mēģiniet automātiski instalēt atjauninājumus</string>
+    <string name="installing">Instalēšana</string>
+    <string name="restart_app">Restartējiet Droid-ify, lai redzētu izmaiņas</string>
+    <string name="waiting_to_start_installation">Gaida instalēšanas sākšanu…</string>
+    <string name="favourites">Izlase</string>
+    <string name="enable_repo">Iespējot repozitoriju</string>
+    <string name="force_clean_up">Piespiedu tīrīšana</string>
+    <string name="material_you">Materiāls Tu</string>
+    <string name="force_clean_up_DESC">Notīra liekos failus</string>
+    <string name="material_you_desc">Izmantojiet materiāls tu krāsu motīvu</string>
+    <string name="repository_unreachable">Repozitorijs nav sasniedzams</string>
 </resources>

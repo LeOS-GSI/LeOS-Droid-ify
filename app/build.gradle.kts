@@ -1,170 +1,152 @@
 plugins {
-	id("com.android.application")
-	id("org.jetbrains.kotlin.android")
-	kotlin("kapt")
-	id(Hilt.plugin)
+    alias(libs.plugins.looker.android.application)
+    alias(libs.plugins.looker.hilt.work)
+    alias(libs.plugins.looker.lint)
+    id("kotlin-parcelize")
 }
 
 android {
-	compileSdk = Android.compileSdk
-	namespace = "com.leos.droidify"
-	defaultConfig {
-		applicationId = Android.appId
-		minSdk = Android.minSdk
-		targetSdk = Android.compileSdk
-		versionCode = Android.versionCode
-		versionName = Android.versionName
-		vectorDrawables.useSupportLibrary = true
+    namespace = "com.looker.droidify"
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
 
-		resourceConfigurations += mutableListOf(
-			/* locale list begin */
-			"ar",
-			"az",
-			"bg",
-			"bn",
-			"ca",
-			"cs",
-			"de",
-			"el",
-			"es",
-			"fa",
-			"fi",
-			"fr",
-			"gl",
-			"hi",
-			"hr",
-			"hu",
-			"in",
-			"it",
-			"iw",
-			"ja",
-			"kn",
-			"ko",
-			"lt",
-			"lv",
-			"ml",
-			"nb-rNO",
-			"nl",
-			"nn",
-			"or",
-			"pa",
-			"pl",
-			"pt",
-			"pt-rBR",
-			"ro",
-			"ru",
-			"si",
-			"sv",
-			"tl",
-			"tr",
-			"uk",
-			"vi",
-			"zh-rCN",
-			"zh-rTW"
-			/* locale list end */
-		)
-	}
+        resourceConfigurations += mutableListOf(
+            /* locale list begin */
+            "ar",
+            "az",
+            "be",
+            "bg",
+            "bn",
+            "ca",
+            "cs",
+            "de",
+            "el",
+            "eo",
+            "es",
+            "fa",
+            "fi",
+            "fr",
+            "gl",
+            "hi",
+            "hr",
+            "hu",
+            "ia",
+            "in",
+            "it",
+            "iw",
+            "ja",
+            "kn",
+            "ko",
+            "lt",
+            "lv",
+            "ml",
+            "nb-rNO",
+            "nl",
+            "nn",
+            "or",
+            "pa",
+            "pl",
+            "pt",
+            "pt-rBR",
+            "ro",
+            "ru",
+            "ryu",
+            "si",
+            "sl",
+            "sr",
+            "sv",
+            "tl",
+            "tr",
+            "uk",
+            "ur",
+            "vi",
+            "zh-rCN",
+            "zh-rTW"
+            /* locale list end */
+        )
+    }
 
-	sourceSets.forEach { source ->
-		val javaDir = source.java.srcDirs.find { it.name == "java" }
-		source.java {
-			srcDir(File(javaDir?.parentFile, "kotlin"))
-		}
-	}
+    sourceSets.forEach { source ->
+        val javaDir = source.java.srcDirs.find { it.name == "java" }
+        source.java {
+            srcDir(File(javaDir?.parentFile, "kotlin"))
+        }
+    }
 
-	compileOptions {
-		isCoreLibraryDesugaringEnabled = true
-
-		sourceCompatibility = JavaVersion.VERSION_1_8
-		targetCompatibility = JavaVersion.VERSION_1_8
-	}
-
-	kotlinOptions {
-		jvmTarget = "1.8"
-	}
-
-	buildTypes {
-		getByName("debug") {
-			applicationIdSuffix = ".debug"
-			resValue("string", "application_name", "LeOS-Droid")
-		}
-		getByName("release") {
-			isMinifyEnabled = true
-			isShrinkResources = true
-			resValue("string", "application_name", "LeOS-Droid")
-			proguardFiles(
-				getDefaultProguardFile("proguard-android-optimize.txt"),
-				"proguard.pro"
-			)
-		}
-		create("alpha") {
-			initWith(getByName("debug"))
-			applicationIdSuffix = ".alpha"
-			resValue("string", "application_name", "LeOS-Droid Alpha")
-			isDebuggable = true
-			isMinifyEnabled = true
-		}
-	}
-	packagingOptions {
-		jniLibs {
-			excludes += Excludes.jniExclude
-		}
-		resources {
-			excludes += Excludes.listExclude
-		}
-	}
-	buildFeatures {
-		aidl = false
-		renderScript = false
-		shaders = false
-	}
-	buildFeatures {
-		viewBinding = true
-	}
+    buildTypes {
+        getByName("debug") {
+            applicationIdSuffix = ".debug"
+            resValue("string", "application_name", "Droid-ify-Debug")
+        }
+        getByName("release") {
+            isMinifyEnabled = true
+            isShrinkResources = true
+            resValue("string", "application_name", "Droid-ify")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard.pro"
+            )
+        }
+        create("alpha") {
+            initWith(getByName("debug"))
+            applicationIdSuffix = ".alpha"
+            resValue("string", "application_name", "Droid-ify Alpha")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard.pro"
+            )
+            isDebuggable = true
+            isMinifyEnabled = true
+        }
+        all {
+            buildConfigField(
+                type = "String",
+                name = "VERSION_NAME",
+                value = "\"v${DefaultConfig.versionName}\""
+            )
+        }
+    }
+    packaging {
+        resources {
+            excludes += listOf(
+                "/DebugProbesKt.bin",
+                "/kotlin/**.kotlin_builtins",
+                "/kotlin/**.kotlin_metadata",
+                "/META-INF/**.kotlin_module",
+                "/META-INF/**.pro",
+                "/META-INF/**.version",
+                "/META-INF/versions/9/previous-**.bin"
+            )
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
 }
 
 dependencies {
 
-	coreLibraryDesugaring(AndroidX.desugar)
+    modules(
+        Modules.coreDomain,
+        Modules.coreCommon,
+        Modules.coreNetwork,
+        Modules.coreDatastore,
+        Modules.coreDI,
+        Modules.installer
+    )
 
-	implementation(project(Modules.coreModel))
-	implementation(project(Modules.coreCommon))
-	implementation(project(Modules.coreData))
-	implementation(project(Modules.coreDatastore))
-	implementation(project(Modules.featureSettings))
-	implementation(project(Modules.installer))
-
-	implementation(kotlin("stdlib"))
-	implementation(Core.core)
-
-	implementation(AndroidX.appCompat)
-	implementation(AndroidX.preference)
-	implementation(AndroidX.recyclerView)
-	implementation(AndroidX.material)
-
-	implementation(Coil.coil)
-
-	implementation(Coroutines.core)
-	implementation(Coroutines.android)
-
-	implementation(Hilt.android)
-	implementation(Hilt.work)
-	kapt(Hilt.compiler)
-	kapt(Hilt.androidX)
-
-	implementation(Jackson.core)
-
-	implementation(Kotlin.datetime)
-
-	implementation(Lifecycle.fragment)
-	implementation(Lifecycle.activity)
-	implementation(Lifecycle.runtime)
-
-	implementation(OkHttp.okhttp)
-
-	implementation(Others.zoomage)
-
-	implementation(SQLite.ktx)
-
-	implementation(Work.manager)
+    implementation(libs.android.material)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.lifecycle.viewModel.ktx)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.sqlite.ktx)
+    implementation(libs.coil.kt)
+    implementation(libs.kotlinx.datetime)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.jackson.core)
+    implementation(libs.image.viewer)
 }

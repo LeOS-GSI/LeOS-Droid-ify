@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="address">Endereço</string>
-    <string name="credits">Contributos</string>
+    <string name="credits">Créditos</string>
     <string name="action_failed">Falha na ação</string>
     <string name="always">Sempre</string>
-    <string name="available">Disponível</string>
+    <string name="available">Explorar</string>
     <string name="confirmation">Confirmação</string>
     <string name="has_non_free_dependencies">Tem dependências não livres</string>
     <string name="already_exists">Já existe</string>
@@ -17,7 +17,7 @@
     <string name="incompatible_api_min_DESC_FORMAT">A versão mínima da API é %d.</string>
     <string name="no_matching_applications_found">Não foi possível encontrar quaisquer aplicações</string>
     <string name="no_proxy">Não usar proxy</string>
-    <string name="notify_about_updates">Notificar sempre que existirem novas versões de aplicações</string>
+    <string name="notify_about_updates">Notificar para atualizações</string>
     <string name="notify_about_updates_summary">Mostrar uma notificação se existirem novas versões</string>
     <string name="promotes_non_free_network_services">Promove serviços de rede não livres</string>
     <string name="promotes_non_free_software">Promove software não livre</string>
@@ -70,7 +70,7 @@
     <string name="license">Licença</string>
     <string name="license_FORMAT">Licença %s</string>
     <string name="light">Claro</string>
-    <string name="link_copied_to_clipboard">Ligação copiada para a área de transferência</string>
+    <string name="link_copied_to_clipboard">Ligação copiada</string>
     <string name="links">Ligações</string>
     <string name="list_animation">Animação de listas</string>
     <string name="list_animation_description">Animar lista da página principal</string>
@@ -110,7 +110,7 @@
     <string name="signature_FORMAT">Assinatura %s</string>
     <string name="size">Tamanho</string>
     <string name="skip">Ignorar</string>
-    <string name="update">Atualização</string>
+    <string name="update">Atualizar</string>
     <string name="bug_tracker">Rastreio de erros</string>
     <string name="connecting">A estabelecer ligação…</string>
     <string name="could_not_validate_FORMAT">Não foi possível validar %s</string>
@@ -183,8 +183,8 @@
     <string name="root_installer">Instalador root</string>
     <string name="shizuku_installer">Instalador Shizuku</string>
     <string name="session_installer">Instalador da sessão</string>
-    <string name="cleanup_title">Intervalo de limpeza</string>
-    <string name="cleanup_description">Tempo necessário para efetuar uma limpeza</string>
+    <string name="cleanup_title">Intervalo de limpeza de APK</string>
+    <string name="cleanup_description">Período para verificar e remover ficheiros descarregados</string>
     <plurals name="days">
         <item quantity="one">Dia</item>
         <item quantity="many">Dias</item>
@@ -209,7 +209,28 @@
     <string name="enable_repo">Ativar repositório</string>
     <string name="waiting_to_start_installation">À espera para começar a instalação…</string>
     <string name="installing">A instalar</string>
-    <string name="restart_app">Reiniciar LeOS-Droid para ver as alterações</string>
+    <string name="restart_app">Reiniciar Droid-ify para ver as alterações</string>
     <string name="auto_update">Atualizações automáticas</string>
     <string name="auto_update_apps">Tentar atualizar aplicações automaticamente</string>
+    <string name="has_non_free_components">Tem componentes não livres</string>
+    <string name="socket_error_DESC">O servidor não conseguiu fornecer um novo pacote.</string>
+    <string name="connection_error_DESC">Não foi possível ligar ao servidor</string>
+    <string name="shizuku_not_installed">Shizuku não está instalado</string>
+    <string name="shizuku_not_alive">Shizuku não está em execução</string>
+    <string name="contains_nsfw">Contém conteúdo não seguro para o trabalho</string>
+    <string name="special_credits">Créditos especiais</string>
+    <string name="home_screen_swiping">Deslize no ecrã principal</string>
+    <string name="home_screen_swiping_DESC">Permitir deslize para trocar de páginas no ecrã principal</string>
+    <string name="label_copy">Copiar</string>
+    <string name="proxy_port_error_not_int">Apenas pode usar um número inteiro para a porta do proxy</string>
+    <string name="repository_not_found">Não foi possível encontrar o repositório seguinte</string>
+    <string name="import_settings_title">Importar definições</string>
+    <string name="import_export">Importar/Exportar</string>
+    <string name="import_settings_DESC">Importar definições e favoritos de um ficheiro</string>
+    <string name="export_settings_title">Exportar definições</string>
+    <string name="export_repos_DESC">Exportar todos os repositórios para um ficheiro</string>
+    <string name="import_repos_title">Importar repositórios</string>
+    <string name="export_settings_DESC">Exportar definições e favoritos para um ficheiro</string>
+    <string name="export_repos_title">Exportar repositórios</string>
+    <string name="import_repos_DESC">Importar todos os repositórios de um ficheiro</string>
 </resources>

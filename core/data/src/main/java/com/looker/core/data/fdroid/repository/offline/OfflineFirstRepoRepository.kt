@@ -1,72 +1,115 @@
-package com.leos.core.data.fdroid.repository.offline
+package com.looker.core.data.fdroid.repository.offline
 
-import android.content.Context
-import com.leos.core.data.fdroid.model.allowUnstable
-import com.leos.core.data.fdroid.model.toEntity
-import com.leos.core.data.fdroid.repository.RepoRepository
-import com.leos.core.data.fdroid.sync.getIndexV1
-import com.leos.core.data.fdroid.sync.processRepos
-import com.leos.core.database.dao.AppDao
-import com.leos.core.database.dao.RepoDao
-import com.leos.core.database.model.RepoEntity
-import com.leos.core.database.model.toEntity
-import com.leos.core.database.model.toExternalModel
-import com.leos.core.model.newer.Repo
-import kotlinx.coroutines.channels.Channel
+import com.looker.core.common.extension.exceptCancellation
+import com.looker.core.data.fdroid.repository.RepoRepository
+import com.looker.core.data.fdroid.sync.IndexManager
+import com.looker.core.data.fdroid.toEntity
+import com.looker.core.database.dao.AppDao
+import com.looker.core.database.dao.RepoDao
+import com.looker.core.database.model.toExternal
+import com.looker.core.database.model.update
+import com.looker.core.datastore.SettingsRepository
+import com.looker.core.di.ApplicationScope
+import com.looker.core.di.DefaultDispatcher
+import com.looker.core.domain.newer.Repo
+import javax.inject.Inject
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.withContext
 
 class OfflineFirstRepoRepository @Inject constructor(
-	private val appDao: AppDao,
-	private val repoDao: RepoDao
+    private val appDao: AppDao,
+    private val repoDao: RepoDao,
+    private val settingsRepository: SettingsRepository,
+    private val indexManager: IndexManager,
+    @DefaultDispatcher private val dispatcher: CoroutineDispatcher,
+    @ApplicationScope private val scope: CoroutineScope
 ) : RepoRepository {
-	override fun getRepos(): Flow<List<Repo>> =
-		repoDao.getRepoStream().map { it.map(RepoEntity::toExternalModel) }
 
-	override suspend fun updateRepo(repo: Repo): Boolean = try {
-		repoDao.updateRepo(repo.toEntity())
-		true
-	} catch (e: Exception) {
-		false
-	}
+    private val preference = runBlocking {
+        settingsRepository.getInitial()
+    }
 
-	override suspend fun enableRepository(repo: Repo, enable: Boolean) {
-		repoDao.updateRepo(repo.copy(enabled = enable).toEntity())
-	}
+    private val locale = preference.language
 
-	override suspend fun sync(context: Context, repo: Repo, allowUnstable: Boolean): Boolean {
-		TODO("Not yet implemented")
-	}
+    override suspend fun getRepo(id: Long): Repo = withContext(dispatcher) {
+        repoDao.getRepoById(id).toExternal(locale)
+    }
 
-	override suspend fun syncAll(context: Context, allowUnstable: Boolean): Boolean =
-		coroutineScope {
-			val repos = repoDao.getRepoStream().first().map(RepoEntity::toExternalModel)
-				.filter { it.enabled }
-			val repoChannel = Channel<Repo>()
-			processRepos(context, repoChannel) { repo, jar ->
-				val index = jar.getIndexV1()
-				val updatedRepo = index.repo.toEntity(
-					fingerPrint = repo.fingerprint,
-					etag = repo.etag,
-					username = repo.username,
-					password = repo.password
-				)
-				val packages = index.packages
-				val apps =
-					index.apps.map {
-						it.toEntity(
-							repoId = repo.id,
-							packages = packages[it.packageName]?.allowUnstable(it, allowUnstable)
-								?: emptyList()
-						)
-					}
-				repoDao.updateRepo(updatedRepo)
-				appDao.upsertApps(apps)
-			}
-			repos.forEach { repoChannel.send(it) }
-			false
-		}
+    override fun getRepos(): Flow<List<Repo>> =
+        repoDao.getRepoStream().map { it.toExternal(locale) }
+
+    override suspend fun updateRepo(repo: Repo) {
+        scope.launch {
+            val entity = repoDao.getRepoById(repo.id)
+            repoDao.upsertRepo(entity.update(repo))
+        }
+    }
+
+    override suspend fun enableRepository(repo: Repo, enable: Boolean) {
+        scope.launch {
+            val entity = repoDao.getRepoById(repo.id)
+            repoDao.upsertRepo(entity.copy(enabled = enable))
+            if (enable) sync(repo)
+        }
+    }
+
+    override suspend fun sync(repo: Repo): Boolean = coroutineScope {
+        val index = try {
+            indexManager.getIndex(listOf(repo))[repo] ?: throw Exception("Empty index returned")
+        } catch (e: Exception) {
+            e.exceptCancellation()
+            return@coroutineScope false
+        }
+        val updatedRepo = index.repo.toEntity(
+            id = repo.id,
+            fingerprint = repo.fingerprint,
+            username = repo.authentication.username,
+            password = repo.authentication.password,
+            etag = repo.versionInfo.etag ?: "",
+            enabled = true
+        )
+        repoDao.upsertRepo(updatedRepo)
+        val apps = index.packages.map {
+            it.value.toEntity(it.key, repo.id, preference.unstableUpdate)
+        }
+        appDao.upsertApps(apps)
+        true
+    }
+
+    override suspend fun syncAll(): Boolean = supervisorScope {
+        val repos = repoDao.getRepoStream().first().filter { it.enabled }
+        val indices = try {
+            indexManager
+                .getIndex(repos.toExternal(locale))
+                .filter { (_, index) -> index != null }
+        } catch (e: Exception) {
+            e.exceptCancellation()
+            return@supervisorScope false
+        }
+        if (indices.isEmpty()) return@supervisorScope true
+        indices.forEach { (repo, index) ->
+            val updatedRepo = index!!.repo.toEntity(
+                id = repo.id,
+                fingerprint = repo.fingerprint,
+                username = repo.authentication.username,
+                password = repo.authentication.password,
+                etag = repo.versionInfo.etag ?: "",
+                enabled = true
+            )
+            repoDao.upsertRepo(updatedRepo)
+            val apps = index.packages.map {
+                it.value.toEntity(it.key, repo.id, preference.unstableUpdate)
+            }
+            appDao.upsertApps(apps)
+        }
+        true
+    }
 }

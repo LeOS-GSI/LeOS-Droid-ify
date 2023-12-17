@@ -16,7 +16,7 @@
     <string name="bug_tracker">Pelacak bug</string>
     <string name="cancel">Batal</string>
     <string name="cant_edit_sync_DESC">Tidak dapat mengedit repositori karena sedang disinkronkan sekarang.</string>
-    <string name="changelog">Changelog</string>
+    <string name="changelog">Log Perubahan</string>
     <string name="action_failed">Tindakan gagal</string>
     <string name="all_applications_up_to_date">Semua aplikasimu sudah yang terbaru</string>
     <string name="contains_non_free_media">Berisi media tidak-bebas</string>
@@ -72,7 +72,7 @@
     <string name="no_description_available_DESC">Deskripsi tidak tersedia</string>
     <string name="no_matching_applications_found">Tidak bisa menemukan aplikasi tersebut</string>
     <string name="no_proxy">Tanpa proksi</string>
-    <string name="notify_about_updates">Beri tahu tentang versi baru dari aplikasi</string>
+    <string name="notify_about_updates">Beri tahu tentang pembaruan</string>
     <string name="notify_about_updates_summary">Tampilkan notifikasi saat versi baru telah tersedia</string>
     <string name="number_of_applications">Jumlah aplikasi</string>
     <string name="ok">OKE</string>
@@ -150,7 +150,7 @@
     <string name="network_error_DESC">Jaringan error</string>
     <string name="license_FORMAT">Lisensi %s</string>
     <string name="installer">Pemasang</string>
-    <string name="link_copied_to_clipboard">Tautan disalin ke papan klip</string>
+    <string name="link_copied_to_clipboard">Tautan disalin</string>
     <string name="light">Terang</string>
     <string name="links">Tautan</string>
     <string name="only_on_wifi">Hanya pada Wi-Fi</string>
@@ -191,8 +191,8 @@
     <string name="no_internet">Kamu tidak memiliki akses internet</string>
     <string name="allow_collapsing_toolbar">Izinkan Bilah Atas Apl untuk Diperluas</string>
     <string name="allow_collapsing_toolbar_DESC">Izinkan bilah atas aplikasi untuk diperluas dan dikecilkan</string>
-    <string name="cleanup_title">Durasi pembersihan</string>
-    <string name="cleanup_description">Waktu yang diperlukan untuk pembersihan untuk memeriksa ulang</string>
+    <string name="cleanup_title">Interval pembersihan APK</string>
+    <string name="cleanup_description">Interval pengecekan dan penghapusan berkas terunduh</string>
     <string name="downloaded_FORMAT">%s Terdownload</string>
     <string name="favourites">Favorit</string>
     <string name="material_you">Material You</string>
@@ -205,5 +205,27 @@
     <string name="waiting_to_start_installation">Menunggu untuk memulai pemasangan…</string>
     <string name="auto_update">Perbarui aplikasi secara otomatis</string>
     <string name="auto_update_apps">Cobalah untuk menginstal pembaruan secara otomatis</string>
-    <string name="restart_app">Restart LeOS-Droid untuk melihat perubahan</string>
+    <string name="restart_app">Ulang Droid-ify untuk melihat perubahan</string>
+    <string name="has_non_free_components">Memiliki komponen tidak terbuka</string>
+    <string name="socket_error_DESC">Server gagal menyediakan paket baru.</string>
+    <string name="connection_error_DESC">Tidak dapat terhubung ke server</string>
+    <string name="home_screen_swiping">Geser Layar Beranda</string>
+    <string name="contains_nsfw">Mengandung konten khusus dewasa</string>
+    <string name="shizuku_not_alive">Shizuku tidak berjalan</string>
+    <string name="home_screen_swiping_DESC">Izinkan pengguna menggeser antar halaman di layar beranda</string>
+    <string name="special_credits">Kredit Spesial</string>
+    <string name="shizuku_not_installed">Shizuku tidak terpasang</string>
+    <string name="label_copy">Salin</string>
+    <string name="proxy_port_error_not_int">Porta proksi harus bilangan bulat</string>
+    <string name="repository_not_found">Repositori berikut tidak ditemukan</string>
+    <string name="import_settings_title">Impor Pengaturan</string>
+    <string name="import_export">Impor/Ekspor</string>
+    <string name="import_settings_DESC">Impor pengaturan dan favorit dari berkas</string>
+    <string name="export_settings_title">Ekspor Pengaturan</string>
+    <string name="export_repos_DESC">Ekspor semua repositori ke berkas</string>
+    <string name="import_repos_title">Impor Repositori</string>
+    <string name="export_settings_DESC">Ekspor pengaturan dan favorit ke berkas</string>
+    <string name="export_repos_title">Ekspor Repositori</string>
+    <string name="import_repos_DESC">Impor semua repositori dari berkas</string>
+    <string name="cannot_open_link">Tidak Bisa Membuka Tautan</string>
 </resources>

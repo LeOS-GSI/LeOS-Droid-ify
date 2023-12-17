@@ -1,8 +1,8 @@
-package com.leos.core.database.di
+package com.looker.core.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.leos.core.database.DroidifyDatabase
+import com.looker.core.database.DroidifyDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,14 +14,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-	@Provides
-	@Singleton
-	fun provideDroidifyDatabase(
-		@ApplicationContext context: Context
-	): DroidifyDatabase = Room.databaseBuilder(
-		context,
-		DroidifyDatabase::class.java,
-		"droidify-database"
-	).createFromAsset("repo.db").build()
-
+    @Provides
+    @Singleton
+    fun provideDroidifyDatabase(
+        @ApplicationContext context: Context
+    ): DroidifyDatabase = Room.databaseBuilder(
+        context,
+        DroidifyDatabase::class.java,
+        "droidify-database"
+    ).createFromAsset("repo.db").build()
 }

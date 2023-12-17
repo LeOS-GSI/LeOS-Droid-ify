@@ -20,12 +20,13 @@
     <string name="available">Explore</string>
     <string name="bug_tracker">Bug tracker</string>
     <string name="cancel">Cancel</string>
+    <string name="cannot_open_link">Cannot Open Link</string>
     <string name="cant_edit_sync_DESC">Cannot edit repository since it is syncing right now.</string>
     <string name="changelog">Changelog</string>
     <string name="changes">Changes</string>
     <string name="checking_repository">Checking repository…</string>
-    <string name="cleanup_title">Clean up duration</string>
-    <string name="cleanup_description">Time required for cleanup to recheck</string>
+    <string name="cleanup_title">APK cleanup interval</string>
+    <string name="cleanup_description">Period to check and remove downloaded files</string>
     <string name="compiled_for_debugging">Compiled for debugging</string>
     <string name="confirmation">Confirmation</string>
     <string name="connecting">Connecting…</string>
@@ -48,6 +49,15 @@
     <string name="downloading">Downloading</string>
     <string name="downloading_FORMAT">Downloading %s…</string>
     <string name="edit_repository">Edit repository</string>
+    <string name="import_export">Import/Export</string>
+    <string name="import_settings_title">Import Settings</string>
+    <string name="import_settings_DESC">Import settings and favourites from file</string>
+    <string name="export_settings_title">Export Settings</string>
+    <string name="export_settings_DESC">Export settings and favourites to file</string>
+    <string name="import_repos_title">Import Repositories</string>
+    <string name="import_repos_DESC">Import all repositories from file</string>
+    <string name="export_repos_title">Export Repositories</string>
+    <string name="export_repos_DESC">Export all repositories to file</string>
     <string name="enable_repo">Enable the repository</string>
     <string name="favourites">Favourites</string>
     <string name="file_format_error_DESC">Invalid file format.</string>
@@ -56,12 +66,17 @@
     <string name="force_clean_up_DESC">Cleans up redundant files</string>
     <string name="has_advertising">Has advertising</string>
     <string name="has_non_free_dependencies">Has non-free dependencies</string>
+    <string name="has_non_free_components">Has non-free components</string>
     <string name="has_security_vulnerabilities">Has security vulnerabilities</string>
+    <string name="home_screen_swiping">Home Screen Swiping</string>
+    <string name="home_screen_swiping_DESC">Allow user to swipe between pages in home screen</string>
     <plurals name="hours">
         <item quantity="one">Hour</item>
         <item quantity="other">Hours</item>
     </plurals>
     <string name="http_error_DESC">Invalid server response.</string>
+    <string name="socket_error_DESC">Server failed to provide new packet.</string>
+    <string name="connection_error_DESC">Could not connect to server</string>
     <string name="http_proxy">HTTP proxy</string>
     <string name="ignore_all_updates">Ignore all new versions</string>
     <string name="ignore_this_update">Ignore this version</string>
@@ -86,6 +101,8 @@
     <string name="session_installer">Session Installer</string>
     <string name="root_installer">Root Installer</string>
     <string name="shizuku_installer">Shizuku Installer</string>
+    <string name="shizuku_not_alive">Shizuku is not running</string>
+    <string name="shizuku_not_installed">Shizuku is not installed</string>
     <string name="installed">Installed</string>
     <string name="installing">Installing</string>
     <string name="integrity_check_error_DESC">Could not check integrity.</string>
@@ -96,11 +113,12 @@
     <string name="invalid_signature_error_DESC">Invalid signature.</string>
     <string name="invalid_username_format">Invalid username format</string>
     <string name="io_error_DESC">Unable to perform certain actions.</string>
+    <string name="label_copy">Copy</string>
     <string name="launch">Launch</string>
     <string name="license">License</string>
     <string name="license_FORMAT">%s license</string>
     <string name="light">Light</string>
-    <string name="link_copied_to_clipboard">Link copied to clipboard</string>
+    <string name="link_copied_to_clipboard">Link copied</string>
     <string name="links">Links</string>
     <string name="list_animation">List Animations</string>
     <string name="list_animation_description">Show list animation on the main page</string>
@@ -121,7 +139,7 @@
     <string name="no_internet">You have no internet connection</string>
     <string name="no_matching_applications_found">Could not find any such applications</string>
     <string name="no_proxy">No proxy</string>
-    <string name="notify_about_updates">Notify about new versions of applications</string>
+    <string name="notify_about_updates">Notify for updates</string>
     <string name="notify_about_updates_summary">Show a notification when new versions are available</string>
     <string name="number_of_applications">Number of applications</string>
     <string name="ok">OK</string>
@@ -143,15 +161,17 @@
     <string name="proxy">Proxy</string>
     <string name="proxy_host">Proxy host</string>
     <string name="proxy_port">Proxy port</string>
+    <string name="proxy_port_error_not_int">Proxy port can only be a Integer</string>
     <string name="proxy_type">Proxy type</string>
     <string name="recently_updated">Recently updated</string>
     <string name="repositories">Repositories</string>
     <string name="repository">Repository</string>
     <string name="repository_not_used_DESC">This repository has not been used yet. Turn it on to view the applications in it.</string>
+    <string name="repository_not_found">Following repository was not found</string>
     <string name="repository_unsigned_DESC">Unsigned. Could not verify the application list. Be careful downloading applications from unsigned repositories.</string>
     <string name="repository_unreachable">Repository unreachable</string>
     <string name="requires_FORMAT">Requires %s</string>
-    <string name="restart_app">Restart LeOS-Droid to see changes</string>
+    <string name="restart_app">Restart Droid-ify to see changes</string>
     <string name="root_permission">Silent Install</string>
     <string name="root_permission_description">Allow root permission for silent installs</string>
     <string name="save">Save</string>
@@ -171,6 +191,7 @@
     <string name="sorting_order">Sorting order</string>
     <string name="source_code">Source code</string>
     <string name="source_code_no_longer_available">Source code no longer available</string>
+    <string name="special_credits">Special Credits</string>
     <string name="suggested">Suggested</string>
     <string name="sync_repositories">Sync repositories</string>
     <string name="sync_repositories_automatically">Sync repositories automatically</string>
@@ -212,4 +233,5 @@
     <string name="installed_applications">Installed applications</string>
     <string name="sort_filter">Sort &amp; Filter</string>
     <string name="new_applications">New applications</string>
+    <string name="contains_nsfw">Contains not safe for work content</string>
 </resources>

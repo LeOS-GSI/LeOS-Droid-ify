@@ -1,7 +1,9 @@
-package com.leos.installer
+package com.looker.installer
 
 import android.content.Context
-import com.leos.core.datastore.UserPreferencesRepository
+import com.looker.core.datastore.SettingsRepository
+import com.looker.installer.installers.root.RootPermissionHandler
+import com.looker.installer.installers.shizuku.ShizukuPermissionHandler
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,10 +15,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object InstallModule {
 
-	@Singleton
-	@Provides
-	fun providesInstaller(
-		@ApplicationContext context: Context,
-		userPreferencesRepository: UserPreferencesRepository
-	): Installer = Installer(context, userPreferencesRepository)
+    @Singleton
+    @Provides
+    fun providesInstaller(
+        @ApplicationContext context: Context,
+        settingsRepository: SettingsRepository
+    ): InstallManager = InstallManager(context, settingsRepository)
+
+    @Singleton
+    @Provides
+    fun provideShizukuPermissionHandler(
+        @ApplicationContext context: Context
+    ): ShizukuPermissionHandler = ShizukuPermissionHandler(context)
+
+    @Singleton
+    @Provides
+    fun provideRootPermissionHandler(): RootPermissionHandler = RootPermissionHandler()
 }

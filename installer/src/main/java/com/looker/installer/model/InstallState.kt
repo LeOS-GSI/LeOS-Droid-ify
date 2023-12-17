@@ -1,13 +1,6 @@
-package com.leos.installer.model
+package com.looker.installer.model
 
-sealed interface InstallState {
+enum class InstallState { Failed, Pending, Installing, Installed }
 
-	object Failed : InstallState
-
-	object Queued : InstallState
-
-	object Installing : InstallState
-
-	object Installed : InstallState
-
-}
+inline val InstallState.isCancellable: Boolean
+    get() = this == InstallState.Pending

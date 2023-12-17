@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Test-->
     <color name="pitch_black">#000000</color>
     <color name="grey_dark">#2C2C2C</color>
 
@@ -52,7 +53,8 @@
     <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
     <color name="md_theme_dark_background">#191C1A</color>
     <color name="md_theme_dark_onBackground">#E1E3DE</color>
-    <color name="md_theme_dark_surface">#191C1A</color>
+    <color name="md_theme_dark_surface">#262B27</color>
+    <color name="md_theme_dark_surface_amoled">#191C1A</color>
     <color name="md_theme_dark_onSurface">#E1E3DE</color>
     <color name="md_theme_dark_surfaceVariant">#414942</color>
     <color name="md_theme_dark_onSurfaceVariant">#C0C9C0</color>

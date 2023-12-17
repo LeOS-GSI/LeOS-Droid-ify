@@ -3,7 +3,7 @@
     <string name="already_exists">Finnes allerede</string>
     <string name="always">Alltid</string>
     <string name="amoled">Svart</string>
-    <string name="author_email">Forfatter e-post</string>
+    <string name="author_email">Utviklerens e-postadresse</string>
     <string name="author_website">Utviklerens nettside</string>
     <string name="changelog">Endringslogg</string>
     <string name="cant_edit_sync_DESC">Kan ikke redigere pakkebrønnen siden den synkroniseres akkurat nå.</string>
@@ -22,7 +22,7 @@
     <string name="has_security_vulnerabilities">Har sikkerhetssårbarheter</string>
     <string name="http_error_DESC">Ugyldig tjenersvar.</string>
     <string name="ignore_all_updates">Ignorer alle nye versjoner</string>
-    <string name="ignore_this_update">Ignorer denne versjon</string>
+    <string name="ignore_this_update">Ignorer denne versjonen</string>
     <string name="incompatible_api_DESC_FORMAT">Din %1$s (API-versjon %2$d) støttes ikke. %3$s</string>
     <string name="incompatible_api_max_DESC_FORMAT">Maksimal API-versjon er %d.</string>
     <string name="incompatible_older_DESC">Denne versjonen er eldre enn den som er installert på enheten din. Avinstaller den først.</string>
@@ -34,7 +34,7 @@
     <string name="light">Lys</string>
     <string name="invalid_username_format">Ugyldig brukernavnsformat</string>
     <string name="license_FORMAT">%s-lisens</string>
-    <string name="link_copied_to_clipboard">Lenke kopiert til utklippstavle</string>
+    <string name="link_copied_to_clipboard">Lenke kopiert</string>
     <string name="list_animation">Listeanimasjoner</string>
     <string name="list_animation_description">Vis liste animasjon på hovedsiden</string>
     <string name="new_updates_available">Nye versjoner av programmer tilgjengelig</string>
@@ -51,7 +51,7 @@
     <string name="permissions">Tilganger</string>
     <string name="plus_more_FORMAT">+%d til</string>
     <string name="settings">Innstillinger</string>
-    <string name="processing_FORMAT">Behandler %1$s…</string>
+    <string name="processing_FORMAT">Behandler %1$s …</string>
     <string name="promotes_non_free_network_services">Promoterer ufrie nettverkstjenester</string>
     <string name="provided_by_FORMAT">Tilbudt av %s</string>
     <string name="proxy_host">Mellomtjenervert</string>
@@ -61,7 +61,7 @@
     <string name="repository">Pakkebrønn</string>
     <string name="requires_FORMAT">Krever %s</string>
     <string name="repository_unsigned_DESC">Usignert. Kunne ikke bekrefte programlisten. Vær forsiktig med å laste ned programmer fra usignerte pakkebrønner.</string>
-    <string name="root_permission">Stille Installasjon</string>
+    <string name="root_permission">Stille installasjon</string>
     <string name="root_permission_description">Tillat rot-tilganger for stille installasjoner</string>
     <string name="screenshots">Skjermavbildninger</string>
     <string name="search">Søk</string>
@@ -94,12 +94,12 @@
     <string name="version_FORMAT">Versjon %s</string>
     <string name="waiting_to_start_download">Venter på å laste ned…</string>
     <string name="action_failed">Handlingen mislyktes</string>
-    <string name="all_applications_up_to_date">Alle programmene dine er av nyeste dato</string>
+    <string name="all_applications_up_to_date">Alle appene dine er oppdatert</string>
     <string name="launch">Kjør</string>
     <string name="notify_about_updates_summary">Vis en merknad når nye versjoner er tilgjengelig</string>
     <string name="add_repository">Legg til pakkebrønn</string>
     <string name="credits">Bidragsytere</string>
-    <string name="downloading_FORMAT">Nedlasting %s…</string>
+    <string name="downloading_FORMAT">Laster ned %s …</string>
     <string name="network_error_DESC">Nettverksfeil</string>
     <string name="no_proxy">Ingen mellomtjener</string>
     <string name="only_on_wifi">Kun på Wi-Fi</string>
@@ -152,7 +152,7 @@
     <string name="sorting_order">Sorteringsrekkefølge</string>
     <string name="sync_repositories">Synkroniser kodelagre</string>
     <string name="repositories">Pakkebrønner</string>
-    <string name="saving_details">Lagrer detaljer…</string>
+    <string name="saving_details">Lagrer detaljer …</string>
     <string name="size">Størrelse</string>
     <string name="tap_to_install_DESC">Trykk for å installere.</string>
     <string name="theme">Drakt</string>
@@ -173,8 +173,8 @@
     <string name="show_less">Vis mindre</string>
     <string name="sort_filter">Sorter og filtrer</string>
     <string name="explore">Utforsk</string>
-    <string name="cleanup_title">Opprenskningsvarighet</string>
-    <string name="cleanup_description">Tids som kreves for at opprenskningen skal sjekkes igjen</string>
+    <string name="cleanup_title">APK cleanup interval</string>
+    <string name="cleanup_description">Period to check and remove downloaded files</string>
     <plurals name="days">
         <item quantity="one">Dag</item>
         <item quantity="other">Dager</item>
@@ -208,5 +208,17 @@
     <string name="auto_update">Installer nye versjoner av programmer automatisk</string>
     <string name="waiting_to_start_installation">Venter på å starte installasjon …</string>
     <string name="installing">Installerer</string>
-    <string name="restart_app">Start LeOS-Droid på ny for å ta i bruk endringene</string>
+    <string name="restart_app">Start Droid-ify på ny for å ta i bruk endringene</string>
+    <string name="has_non_free_components">Har ufrie komponenter</string>
+    <string name="home_screen_swiping">Hjemmeskjermsdragning</string>
+    <string name="contains_nsfw">Inneholder sensurerbart innhold</string>
+    <string name="shizuku_not_alive">Shizuku kjører ikke</string>
+    <string name="connection_error_DESC">Kunne ikke koble til tjener</string>
+    <string name="socket_error_DESC">Tjeneren kunne ikke tilby ny pakke.</string>
+    <string name="label_copy">Kopier</string>
+    <string name="proxy_port_error_not_int">Mellomtjenerport må være et heltall</string>
+    <string name="home_screen_swiping_DESC">Tillat bruker å dra mellom sider på hjemmeskjermen</string>
+    <string name="repository_not_found">Følgende pakkebrønner ble funnet</string>
+    <string name="special_credits">Spesiell takk til</string>
+    <string name="shizuku_not_installed">Shizuku er ikke installert</string>
 </resources>

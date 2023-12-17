@@ -96,7 +96,7 @@
     <string name="license">लाइसेंस</string>
     <string name="license_FORMAT">%s लाइसेंस</string>
     <string name="light">हल्की</string>
-    <string name="link_copied_to_clipboard">लिंक को क्लिपबोर्ड पर कॉपी किया गया</string>
+    <string name="link_copied_to_clipboard">लिंक कॉपी किया गया</string>
     <string name="list_animation">एनिमेशन की सूची दिखाए</string>
     <string name="list_animation_description">मुख्य पृष्ठ पर एनीमेशन की सूची दिखाएं</string>
     <string name="merging_FORMAT">%s . को मर्ज कर रहा है</string>
@@ -112,7 +112,7 @@
         <item quantity="one">%d एप्लिकेशन का एक नया संस्करण है।</item>
         <item quantity="other">%d एप्लीकेशंस के नए संस्करण हैं।</item>
     </plurals>
-    <string name="notify_about_updates">अनुप्रयोगों के नए संस्करणों के बारे में सूचित करें</string>
+    <string name="notify_about_updates">अपडेटस के बारे में सूचित करें</string>
     <string name="notify_about_updates_summary">नए संस्करण उपलब्ध होने पर सूचना दिखाएं</string>
     <string name="number_of_applications">अप्लिकेशन संख्या</string>
     <string name="ok">ठीक है</string>
@@ -168,7 +168,7 @@
     <string name="latest">नवीनतम</string>
     <string name="installed_applications">इंस्टॉल किए गए एप्लिकेशन</string>
     <string name="update_all">सभी अपडेट करें</string>
-    <string name="explore">अन्वेषण</string>
+    <string name="explore">एक्सप्लोर करें</string>
     <string name="no_applications_installed">कोई इंस्टॉल किए गए एप्लिकेशंनस नहीं</string>
     <string name="invalid_address">गलत पता</string>
     <string name="invalid_fingerprint_format">अमान्य फ़िंगरप्रिंट प्रारूप</string>
@@ -182,8 +182,8 @@
     <string name="validation_index_error_DESC">अनुक्रमणिका सत्यापित नहीं की जा सकी।</string>
     <string name="unverified">असत्यापित</string>
     <string name="sort_filter">छाँटें और फ़िल्टर करें</string>
-    <string name="cleanup_title">साफ-सफाई अंतराल</string>
-    <string name="cleanup_description">साफ-सफाई के अंतराल की अवधी</string>
+    <string name="cleanup_title">एपीके सफाई अंतराल</string>
+    <string name="cleanup_description">डाउनलोड की गई फ़ाइलों को जांचने और निकालने की अवधि</string>
     <string name="only_on_wifi_with_charging">केवल वाई-फ़ाई व च्राजिंग पर</string>
     <plurals name="days">
         <item quantity="one">दिन</item>
@@ -207,6 +207,28 @@
     <string name="auto_update">ऐप्स को ऑटो अपडेट करें</string>
     <string name="auto_update_apps">अपडेटस को स्वचालित रूप से इंस्टॉल करने का प्रयास करें</string>
     <string name="enable_repo">रिपॉजिटरी को सक्षम करें</string>
-    <string name="restart_app">बदलाव देखने के लिए LeOS-Droid को रीस्टार्ट करें</string>
+    <string name="restart_app">बदलाव देखने के लिए Droid-ify को रीस्टार्ट करें</string>
     <string name="installing">इंस्टॉल कर रहा है</string>
+    <string name="has_non_free_components">गैर-मुक्त घटक हैं</string>
+    <string name="socket_error_DESC">सर्वर नया पैकेट प्रदान करने में विफल रहा।</string>
+    <string name="connection_error_DESC">सर्वर से कनेक्ट नहीं हो सका</string>
+    <string name="contains_nsfw">इसमें कार्य के लिए असुरक्षित सामग्री है</string>
+    <string name="shizuku_not_alive">Shizuku नहीं चल रहा है</string>
+    <string name="shizuku_not_installed">Shizuku इंस्टाल नहीं है</string>
+    <string name="special_credits">विशेष श्रेय</string>
+    <string name="home_screen_swiping">होम स्क्रीन स्वाइपिंग</string>
+    <string name="home_screen_swiping_DESC">उपयोगकर्ता को होम स्क्रीन में पृष्ठों के बीच स्वाइप करने की अनुमति दें</string>
+    <string name="label_copy">कापी करें</string>
+    <string name="proxy_port_error_not_int">प्रॉक्सी पोर्ट केवल पूर्णांक हो सकता है</string>
+    <string name="repository_not_found">निम्नलिखित रिपॉजिटरी नहीं मिली</string>
+    <string name="import_settings_title">आयात सेटिंग्स</string>
+    <string name="import_export">आयात निर्यात</string>
+    <string name="import_settings_DESC">फ़ाइल से सेटिंग्स और पसंदीदा आयात करें</string>
+    <string name="export_settings_title">निर्यात सेटिंग्स</string>
+    <string name="export_repos_DESC">फ़ाइल में सभी रिपॉजिटरी निर्यात करें</string>
+    <string name="import_repos_title">रिपॉजिटरी आयात करें</string>
+    <string name="export_settings_DESC">सेटिंग्स और पसंदीदा फ़ाइल में निर्यात करें</string>
+    <string name="export_repos_title">रिपॉजिटरीआं निर्यात करें</string>
+    <string name="import_repos_DESC">फ़ाइल से सभी रिपॉजिटरी आयात करें</string>
+    <string name="cannot_open_link">लिंक नहीं खुल सका</string>
 </resources>

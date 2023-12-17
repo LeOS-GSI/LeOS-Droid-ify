@@ -1,57 +1,30 @@
 plugins {
-	id("com.android.library")
-	id("org.jetbrains.kotlin.android")
-	kotlin("kapt")
-	id(Hilt.plugin)
+    alias(libs.plugins.looker.android.library)
+    alias(libs.plugins.looker.hilt)
+    alias(libs.plugins.looker.lint)
 }
 
 android {
-	compileSdk = Android.compileSdk
-	namespace = "com.leos.installer"
-	defaultConfig {
-		minSdk = Android.minSdk
-	}
+    namespace = "com.looker.installer"
 
-	buildTypes {
-		release {
-			isMinifyEnabled = true
-			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
-		}
-		create("alpha") {
-			initWith(getByName("debug"))
-			isMinifyEnabled = true
-		}
-	}
-	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_1_8
-		targetCompatibility = JavaVersion.VERSION_1_8
-	}
-	kotlinOptions {
-		jvmTarget = "1.8"
-	}
-	buildFeatures {
-		buildConfig = false
-		aidl = false
-		renderScript = false
-		shaders = false
-		resValues = false
-	}
+    buildTypes {
+        release {
+            isMinifyEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+        }
+        create("alpha") {
+            initWith(getByName("debug"))
+            isMinifyEnabled = true
+        }
+    }
 }
 
 dependencies {
-	implementation(project(Modules.coreCommon))
-	implementation(project(Modules.coreDatastore))
-	implementation(project(Modules.coreModel))
+    modules(Modules.coreCommon, Modules.coreDatastore)
 
-	implementation(kotlin("stdlib"))
-	implementation(Coroutines.core)
-	implementation(Coroutines.android)
-
-	api(Others.libsu)
-
-	api(Others.shizukuApi)
-	api(Others.shizukuProvider)
-
-	implementation(Hilt.android)
-	kapt(Hilt.compiler)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.guava)
+    implementation(libs.libsu.core)
+    implementation(libs.shizuku.api)
+    api(libs.shizuku.provider)
 }

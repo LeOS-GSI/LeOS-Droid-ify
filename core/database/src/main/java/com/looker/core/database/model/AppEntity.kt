@@ -1,127 +1,132 @@
-package com.leos.core.database.model
+package com.looker.core.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import com.leos.core.model.newer.App
-import com.leos.core.model.newer.Author
-import com.leos.core.model.newer.Donate
-import com.leos.core.model.newer.Localized
-import com.leos.core.model.newer.Metadata
-import com.leos.core.model.newer.toPackageName
-import kotlinx.serialization.Serializable
+import com.looker.core.common.nullIfEmpty
+import com.looker.core.common.toPackageName
+import com.looker.core.database.utils.localizedValue
+import com.looker.core.domain.newer.App
+import com.looker.core.domain.newer.Author
+import com.looker.core.domain.newer.Donation
+import com.looker.core.domain.newer.Graphics
+import com.looker.core.domain.newer.Links
+import com.looker.core.domain.newer.Metadata
+import com.looker.core.domain.newer.Screenshots
+
+internal typealias LocalizedString = Map<String, String>
+internal typealias LocalizedList = Map<String, List<String>>
 
 @Entity(tableName = "apps", primaryKeys = ["repoId", "packageName"])
 data class AppEntity(
-	@ColumnInfo(name = "packageName")
-	val packageName: String,
-	@ColumnInfo(name = "repoId")
-	val repoId: Long,
-	val categories: List<String>,
-	val antiFeatures: List<String>,
-	val summary: String,
-	val description: String,
-	val changelog: String,
-	val translation: String,
-	val issueTracker: String,
-	val sourceCode: String,
-	val binaries: String,
-	val name: String,
-	val authorName: String,
-	val authorEmail: String,
-	val authorWebSite: String,
-	val authorPhone: String,
-	val donate: String,
-	val liberapayID: String,
-	val liberapay: String,
-	val openCollective: String,
-	val bitcoin: String,
-	val litecoin: String,
-	val flattrID: String,
-	val suggestedVersionName: String,
-	val suggestedVersionCode: Int,
-	val license: String,
-	val webSite: String,
-	val added: Long,
-	val icon: String,
-	val lastUpdated: Long,
-	val localized: Map<String, LocalizedEntity>,
-	val packages: List<PackageEntity>
+    @ColumnInfo(name = "packageName")
+    val packageName: String,
+    @ColumnInfo(name = "repoId")
+    val repoId: Long,
+    val categories: List<String>,
+    val summary: LocalizedString,
+    val description: LocalizedString,
+    val changelog: String,
+    val translation: String,
+    val issueTracker: String,
+    val sourceCode: String,
+    val binaries: String,
+    val name: LocalizedString,
+    val authorName: String,
+    val authorEmail: String,
+    val authorWebSite: String,
+    val donate: String,
+    val liberapayID: String,
+    val liberapay: String,
+    val openCollective: String,
+    val bitcoin: String,
+    val litecoin: String,
+    val flattrID: String,
+    val suggestedVersionName: String,
+    val suggestedVersionCode: Long,
+    val license: String,
+    val webSite: String,
+    val added: Long,
+    val icon: LocalizedString,
+    val phoneScreenshots: LocalizedList,
+    val sevenInchScreenshots: LocalizedList,
+    val tenInchScreenshots: LocalizedList,
+    val wearScreenshots: LocalizedList,
+    val tvScreenshots: LocalizedList,
+    val featureGraphic: LocalizedString,
+    val promoGraphic: LocalizedString,
+    val tvBanner: LocalizedString,
+    val video: LocalizedString,
+    val lastUpdated: Long,
+    val packages: List<PackageEntity>
 )
 
-@Serializable
-data class LocalizedEntity(
-	val description: String,
-	val name: String,
-	val icon: String,
-	val whatsNew: String,
-	val video: String,
-	val phoneScreenshots: List<String>,
-	val sevenInchScreenshots: List<String>,
-	val tenInchScreenshots: List<String>,
-	val wearScreenshots: List<String>,
-	val tvScreenshots: List<String>,
-	val featureGraphic: String,
-	val promoGraphic: String,
-	val tvBanner: String,
-	val summary: String
+fun AppEntity.toExternal(locale: String, installed: PackageEntity? = null): App = App(
+    repoId = repoId,
+    categories = categories,
+    links = links(),
+    metadata = metadata(locale),
+    screenshots = screenshots(locale),
+    graphics = graphics(locale),
+    author = author(),
+    donation = donations(),
+    packages = packages.toExternal(locale) { it == installed }
 )
 
-fun AppEntity.toExternalModel(): App = App(
-	repoId = repoId,
-	categories = categories,
-	antiFeatures = antiFeatures,
-	translation = translation,
-	issueTracker = issueTracker,
-	sourceCode = sourceCode,
-	binaries = binaries,
-	license = license,
-	webSite = webSite,
-	metadata = Metadata(
-		name = name,
-		description = description,
-		summary = summary,
-		packageName = packageName.toPackageName(),
-		icon = icon,
-		changelog = changelog,
-		added = added,
-		lastUpdated = lastUpdated,
-		suggestedVersionName = suggestedVersionName,
-		suggestedVersionCode = suggestedVersionCode
-	),
-	author = Author(
-		name = authorName,
-		email = authorEmail,
-		web = authorWebSite,
-		phone = authorPhone
-	),
-	donation = buildSet {
-		when {
-			openCollective.isNotBlank() -> add(Donate.OpenCollective(openCollective))
-			flattrID.isNotBlank() -> add(Donate.Flattr(flattrID))
-			litecoin.isNotBlank() -> add(Donate.Litecoin(litecoin))
-			bitcoin.isNotBlank() -> add(Donate.Bitcoin(bitcoin))
-			liberapay.isNotBlank() && liberapayID.isNotBlank() ->
-				add(Donate.Liberapay(liberapayID, liberapay))
-			donate.isNotBlank() -> add(Donate.Regular(donate))
-		}
-	},
-	localized = localized.mapValues { it.value.toExternalModel() },
-	packages = packages.map(PackageEntity::toExternalModel)
+fun List<AppEntity>.toExternal(
+    locale: String,
+    isInstalled: (AppEntity) -> PackageEntity?
+): List<App> = map {
+    it.toExternal(locale, isInstalled(it))
+}
+
+private fun AppEntity.author(): Author = Author(
+    name = authorName,
+    email = authorEmail,
+    web = authorWebSite
 )
 
-fun LocalizedEntity.toExternalModel(): Localized = Localized(
-	description = description,
-	name = name,
-	icon = icon,
-	whatsNew = whatsNew,
-	video = video,
-	phoneScreenshots = phoneScreenshots,
-	sevenInchScreenshots = sevenInchScreenshots,
-	tenInchScreenshots = tenInchScreenshots,
-	wearScreenshots = wearScreenshots,
-	tvScreenshots = tvScreenshots,
-	featureGraphic = featureGraphic,
-	promoGraphic = promoGraphic,
-	tvBanner = tvBanner,
-	summary = summary
+private fun AppEntity.donations(): Donation = Donation(
+    regularUrl = donate.nullIfEmpty(),
+    bitcoinAddress = bitcoin.nullIfEmpty(),
+    flattrId = flattrID.nullIfEmpty(),
+    liteCoinAddress = litecoin.nullIfEmpty(),
+    openCollectiveId = openCollective.nullIfEmpty(),
+    librePayId = liberapayID.nullIfEmpty(),
+    librePayAddress = liberapay.nullIfEmpty()
+)
+
+private fun AppEntity.graphics(locale: String): Graphics = Graphics(
+    featureGraphic = featureGraphic.localizedValue(locale) ?: "",
+    promoGraphic = promoGraphic.localizedValue(locale) ?: "",
+    tvBanner = tvBanner.localizedValue(locale) ?: "",
+    video = video.localizedValue(locale) ?: ""
+)
+
+private fun AppEntity.links(): Links = Links(
+    changelog = changelog,
+    issueTracker = issueTracker,
+    sourceCode = sourceCode,
+    translation = translation,
+    webSite = webSite
+)
+
+private fun AppEntity.metadata(locale: String): Metadata = Metadata(
+    name = name.localizedValue(locale) ?: "",
+    packageName = packageName.toPackageName(),
+    added = added,
+    description = description.localizedValue(locale) ?: "",
+    icon = icon.localizedValue(locale) ?: "",
+    lastUpdated = lastUpdated,
+    license = license,
+    suggestedVersionCode = suggestedVersionCode,
+    suggestedVersionName = suggestedVersionName,
+    summary = summary.localizedValue(locale) ?: ""
+)
+
+private fun AppEntity.screenshots(locale: String): Screenshots = Screenshots(
+    phone = phoneScreenshots.localizedValue(locale) ?: emptyList(),
+    sevenInch = sevenInchScreenshots.localizedValue(locale) ?: emptyList(),
+    tenInch = tenInchScreenshots.localizedValue(locale) ?: emptyList(),
+    tv = tvScreenshots.localizedValue(locale) ?: emptyList(),
+    wear = wearScreenshots.localizedValue(locale) ?: emptyList()
 )

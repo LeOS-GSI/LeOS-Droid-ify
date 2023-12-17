@@ -12,8 +12,8 @@
     <string name="changelog">Rexistro de cambios</string>
     <string name="changes">Cambios</string>
     <string name="checking_repository">Comprobando o repositorio…</string>
-    <string name="cleanup_title">Duración dá limpeza</string>
-    <string name="cleanup_description">Tempo necesario para que a limpeza se volva comprobar</string>
+    <string name="cleanup_title">APK cleanup interval</string>
+    <string name="cleanup_description">Period to check and remove downloaded files</string>
     <string name="compiled_for_debugging">Compilado para a depuración</string>
     <string name="confirmation">Confirmación</string>
     <string name="connecting">Conectando…</string>
@@ -205,8 +205,12 @@
     <string name="force_clean_up">Forzala limpeza</string>
     <string name="enable_repo">Activalo repositorio</string>
     <string name="installing">Instalando</string>
-    <string name="restart_app">Reinicia LeOS-Droid para velos cambios</string>
+    <string name="restart_app">Reinicia Droid-ify para velos cambios</string>
     <string name="waiting_to_start_installation">Agardando para iniciala instalación…</string>
     <string name="auto_update">Actualizacións automática das aplicacións</string>
     <string name="auto_update_apps">Tenta instalar actualizacións automaticamente</string>
+    <string name="import_settings_title">Importalos axustes</string>
+    <string name="import_export">Importación/exportación</string>
+    <string name="import_settings_DESC">Importalos axustes e favoritos dende un fixeiro</string>
+    <string name="cannot_open_link">Non se pode abrir a ligazón</string>
 </resources>

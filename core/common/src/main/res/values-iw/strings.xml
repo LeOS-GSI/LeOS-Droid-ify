@@ -16,8 +16,8 @@
     <string name="changelog">יומן שינויים</string>
     <string name="changes">שינויים</string>
     <string name="checking_repository">בודק מאגר…</string>
-    <string name="cleanup_title">משך הניקוי</string>
-    <string name="cleanup_description">הזמן הנדרש לניקוי כדי לבדוק מחדש</string>
+    <string name="cleanup_title">APK cleanup interval</string>
+    <string name="cleanup_description">Period to check and remove downloaded files</string>
     <string name="confirmation">אישורים</string>
     <string name="could_not_download_FORMAT">לא ניתן היה להוריד את %s</string>
     <string name="could_not_sync_FORMAT">לא ניתן היה לסנכרן את %s</string>
@@ -203,4 +203,16 @@
     <string name="allow_collapsing_toolbar_DESC">אפשר לסרגל האפליקציות העליון להתרחב ולהתמוטט</string>
     <string name="no_internet">אין לך חיבור לאינטרנט</string>
     <string name="io_error_DESC">לא ניתן לבצע פעולות מסוימות.</string>
+    <string name="installing">התקנה</string>
+    <string name="material_you">חומר אתה</string>
+    <string name="material_you_desc">השתמש בחומר אתה נושא צבע</string>
+    <string name="restart_app">הפעל מחדש את Droid-iim כדי לראות שינויים</string>
+    <string name="waiting_to_start_installation">מחכה להתחיל בהתקנה …</string>
+    <string name="favourites">מועדפים</string>
+    <string name="force_clean_up_DESC">מנקה קבצים מיותרים</string>
+    <string name="enable_repo">אפשר את המאגר</string>
+    <string name="force_clean_up">כוח לנקות</string>
+    <string name="repository_unreachable">מאגר בלתי ניתן להשגה</string>
+    <string name="auto_update">אפליקציות לעדכון אוטומטי</string>
+    <string name="auto_update_apps">נסה להתקין עדכונים באופן אוטומטי</string>
 </resources>

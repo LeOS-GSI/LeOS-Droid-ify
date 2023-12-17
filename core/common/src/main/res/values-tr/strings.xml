@@ -73,7 +73,7 @@
     <string name="license">Lisans</string>
     <string name="license_FORMAT">%s lisansı</string>
     <string name="light">Açık</string>
-    <string name="link_copied_to_clipboard">Bağlantı panoya kopyalandı</string>
+    <string name="link_copied_to_clipboard">Bağlantı kopyalandı</string>
     <string name="links">Bağlantılar</string>
     <string name="list_animation">Liste Animasyonu</string>
     <string name="list_animation_description">Liste canlandırmasını ana sayfada göster</string>
@@ -91,7 +91,7 @@
     <string name="no_description_available_DESC">Açıklama yok</string>
     <string name="no_matching_applications_found">Böyle bir uygulama bulunamadı</string>
     <string name="no_proxy">Proxy yok</string>
-    <string name="notify_about_updates">Uygulamaların yeni sürümleri hakkında bilgilendir</string>
+    <string name="notify_about_updates">Güncellemeleri bildir</string>
     <string name="notify_about_updates_summary">Yeni sürümler kullanılabilir olduğunda bir bildirim göster</string>
     <string name="number_of_applications">Uygulama sayısı</string>
     <string name="ok">Tamam</string>
@@ -183,13 +183,13 @@
     <string name="session_installer">Oturum Kurucusu</string>
     <string name="root_installer">Root Kurucusu</string>
     <string name="shizuku_installer">Shizuku Kurucusu</string>
-    <string name="cleanup_title">Temizleme süresi</string>
+    <string name="cleanup_title">APK temizleme aralığı</string>
     <plurals name="days">
         <item quantity="one">Gün</item>
         <item quantity="other">Günler</item>
     </plurals>
     <string name="only_on_wifi_with_charging">Sadece Wi-Fi açık ve Şarj Olurken</string>
-    <string name="cleanup_description">Temizleme işleminin yeniden kontrolü için gereken süre</string>
+    <string name="cleanup_description">İndirilen dosyaları kontrol etme ve kaldırma süresi</string>
     <plurals name="hours">
         <item quantity="one">Saat</item>
         <item quantity="other">Saatler</item>
@@ -206,8 +206,30 @@
     <string name="force_clean_up_DESC">Gereksiz dosyaları temizler</string>
     <string name="enable_repo">Depoyu etkinleştir</string>
     <string name="installing">Kuruluyor</string>
-    <string name="restart_app">Değişiklikleri görmek için LeOS-Droid\'ı yeniden başlatın</string>
+    <string name="restart_app">Değişiklikleri görmek için Droid-ify\'ı yeniden başlatın</string>
     <string name="waiting_to_start_installation">Kurulumun başlatılması bekleniyor…</string>
     <string name="auto_update">Uygulamaları otomatik güncelle</string>
     <string name="auto_update_apps">Güncellemeleri otomatik olarak kurmaya çalış</string>
+    <string name="has_non_free_components">Özgür olmayan bileşenlere sahip</string>
+    <string name="home_screen_swiping">Ana Ekranda Kaydırma</string>
+    <string name="contains_nsfw">Uygunsuz içerik barındırır</string>
+    <string name="shizuku_not_alive">Shizuku çalışmıyor</string>
+    <string name="connection_error_DESC">Sunucuya bağlanılamadı</string>
+    <string name="socket_error_DESC">Sunucu yeni paketi sağlayamadı.</string>
+    <string name="label_copy">Kopyala</string>
+    <string name="proxy_port_error_not_int">Proxy kapısı (port) sadece tam sayı olabilir</string>
+    <string name="home_screen_swiping_DESC">Kullanıcı ana ekrandayken sayfalar arası kaydırabilmesini sağlar</string>
+    <string name="repository_not_found">İlgili depo bulunamadı</string>
+    <string name="special_credits">Teşekkürler</string>
+    <string name="shizuku_not_installed">Shizuku kurulu değil</string>
+    <string name="import_settings_title">İçe aktarma seçenekleri</string>
+    <string name="import_export">Al/Aktar</string>
+    <string name="import_settings_DESC">Ayarları ve favorileri dosyadan içe aktar</string>
+    <string name="export_settings_title">Dışa Aktarma Seçenekleri</string>
+    <string name="export_repos_DESC">Tüm depoları dosyaya aktar</string>
+    <string name="import_repos_title">Depo ekle</string>
+    <string name="export_settings_DESC">Ayarları ve favorileri dosyaya aktar</string>
+    <string name="export_repos_title">Depoları Dışa Aktar</string>
+    <string name="import_repos_DESC">Tüm depoları dosyadan içe aktar</string>
+    <string name="cannot_open_link">Bağlantı açılamıyor</string>
 </resources>

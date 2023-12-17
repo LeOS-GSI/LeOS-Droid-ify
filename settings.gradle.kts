@@ -1,8 +1,9 @@
 pluginManagement {
+	includeBuild("build-logic")
 	repositories {
-		gradlePluginPortal()
 		google()
 		mavenCentral()
+		gradlePluginPortal()
 	}
 }
 dependencyResolutionManagement {
@@ -14,14 +15,16 @@ dependencyResolutionManagement {
 	}
 }
 
-rootProject.name = "LeOS-Droid"
+rootProject.name = "Droid-ify"
 include(
 	":app",
 	":core:common",
 	":core:data",
 	":core:database",
 	":core:datastore",
-	":core:model",
-	":feature-settings",
+    ":core:di",
+    ":core:domain",
+	":core:network",
 	":installer"
 )
+include(":sync:fdroid")
