@@ -1,11 +1,11 @@
-package com.looker.core.datastore
+package com.leos.core.datastore
 
 import android.net.Uri
-import com.looker.core.datastore.model.AutoSync
-import com.looker.core.datastore.model.InstallerType
-import com.looker.core.datastore.model.ProxyType
-import com.looker.core.datastore.model.SortOrder
-import com.looker.core.datastore.model.Theme
+import com.leos.core.datastore.model.AutoSync
+import com.leos.core.datastore.model.InstallerType
+import com.leos.core.datastore.model.ProxyType
+import com.leos.core.datastore.model.SortOrder
+import com.leos.core.datastore.model.Theme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map

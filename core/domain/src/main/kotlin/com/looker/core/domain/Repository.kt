@@ -1,6 +1,6 @@
-package com.looker.core.domain
+package com.leos.core.domain
 
-import com.looker.core.domain.newer.isOnion
+import com.leos.core.domain.newer.isOnion
 import java.net.URL
 
 data class Repository(

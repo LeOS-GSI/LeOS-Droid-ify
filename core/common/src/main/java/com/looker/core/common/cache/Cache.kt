@@ -1,4 +1,4 @@
-package com.looker.core.common.cache
+package com.leos.core.common.cache
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -11,8 +11,8 @@ import android.os.Build
 import android.os.ParcelFileDescriptor
 import android.provider.OpenableColumns
 import android.system.Os
-import com.looker.core.common.SdkCheck
-import com.looker.core.common.sdkAbove
+import com.leos.core.common.SdkCheck
+import com.leos.core.common.sdkAbove
 import java.io.File
 import java.util.UUID
 import kotlin.concurrent.thread

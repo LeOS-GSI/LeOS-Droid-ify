@@ -1,5 +1,5 @@
-import com.looker.droidify.getLibrary
-import com.looker.droidify.libs
+import com.leos.droidify.getLibrary
+import com.leos.droidify.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies

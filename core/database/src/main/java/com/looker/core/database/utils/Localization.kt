@@ -1,7 +1,7 @@
-package com.looker.core.database.utils
+package com.leos.core.database.utils
 
 import androidx.core.os.LocaleListCompat
-import com.looker.core.common.stripBetween
+import com.leos.core.common.stripBetween
 import java.util.Locale
 
 internal fun localeListCompat(tag: String): LocaleListCompat =

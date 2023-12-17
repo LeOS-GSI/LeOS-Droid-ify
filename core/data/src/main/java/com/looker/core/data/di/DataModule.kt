@@ -1,11 +1,11 @@
-package com.looker.core.data.di
+package com.leos.core.data.di
 
-import com.looker.core.data.fdroid.repository.AppRepository
-import com.looker.core.data.fdroid.repository.RepoRepository
-import com.looker.core.data.fdroid.repository.offline.OfflineFirstAppRepository
-import com.looker.core.data.fdroid.repository.offline.OfflineFirstRepoRepository
-import com.looker.core.data.fdroid.sync.IndexDownloader
-import com.looker.core.data.fdroid.sync.IndexDownloaderImpl
+import com.leos.core.data.fdroid.repository.AppRepository
+import com.leos.core.data.fdroid.repository.RepoRepository
+import com.leos.core.data.fdroid.repository.offline.OfflineFirstAppRepository
+import com.leos.core.data.fdroid.repository.offline.OfflineFirstRepoRepository
+import com.leos.core.data.fdroid.sync.IndexDownloader
+import com.leos.core.data.fdroid.sync.IndexDownloaderImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

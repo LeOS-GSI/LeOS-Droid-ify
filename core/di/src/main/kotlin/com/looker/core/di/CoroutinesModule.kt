@@ -1,4 +1,4 @@
-package com.looker.core.di
+package com.leos.core.di
 
 import dagger.Module
 import dagger.Provides

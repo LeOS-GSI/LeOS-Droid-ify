@@ -1,4 +1,4 @@
-package com.looker.installer.installers.root
+package com.leos.installer.installers.root
 
 import com.topjohnwu.superuser.Shell
 

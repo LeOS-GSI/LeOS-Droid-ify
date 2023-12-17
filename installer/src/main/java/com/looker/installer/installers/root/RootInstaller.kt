@@ -1,13 +1,13 @@
-package com.looker.installer.installers.root
+package com.leos.installer.installers.root
 
 import android.content.Context
-import com.looker.core.common.PackageName
-import com.looker.core.common.SdkCheck
-import com.looker.core.common.cache.Cache
-import com.looker.installer.installers.Installer
-import com.looker.installer.installers.uninstallPackage
-import com.looker.installer.model.InstallItem
-import com.looker.installer.model.InstallState
+import com.leos.core.common.PackageName
+import com.leos.core.common.SdkCheck
+import com.leos.core.common.cache.Cache
+import com.leos.installer.installers.Installer
+import com.leos.installer.installers.uninstallPackage
+import com.leos.installer.model.InstallItem
+import com.leos.installer.model.InstallState
 import com.topjohnwu.superuser.Shell
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.io.File

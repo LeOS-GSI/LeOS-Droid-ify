@@ -1,11 +1,11 @@
-package com.looker.core.database
+package com.leos.core.database
 
 import androidx.core.os.LocaleListCompat
 import androidx.core.os.LocaleListCompat.getEmptyLocaleList
-import com.looker.core.database.utils.localeListCompat
-import com.looker.core.database.utils.localizedValue
-import com.looker.core.database.utils.suitableLocale
-import com.looker.core.database.utils.suitableTag
+import com.leos.core.database.utils.localeListCompat
+import com.leos.core.database.utils.localizedValue
+import com.leos.core.database.utils.suitableLocale
+import com.leos.core.database.utils.suitableTag
 import org.junit.Test
 import java.util.Locale
 import kotlin.test.assertEquals

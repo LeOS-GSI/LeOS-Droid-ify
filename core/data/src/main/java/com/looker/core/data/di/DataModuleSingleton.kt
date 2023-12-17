@@ -1,7 +1,7 @@
-package com.looker.core.data.di
+package com.leos.core.data.di
 
-import com.looker.core.data.fdroid.sync.IndexDownloader
-import com.looker.core.data.fdroid.sync.IndexManager
+import com.leos.core.data.fdroid.sync.IndexDownloader
+import com.leos.core.data.fdroid.sync.IndexManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.looker.core.database.model
+package com.leos.core.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

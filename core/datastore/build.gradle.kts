@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.looker.core.datastore"
+    namespace = "com.leos.core.datastore"
 
     buildTypes {
         release {

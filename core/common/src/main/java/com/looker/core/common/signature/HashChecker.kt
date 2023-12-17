@@ -1,7 +1,7 @@
-package com.looker.core.common.signature
+package com.leos.core.common.signature
 
-import com.looker.core.common.extension.exceptCancellation
-import com.looker.core.common.hex
+import com.leos.core.common.extension.exceptCancellation
+import com.leos.core.common.hex
 import java.io.File
 import java.security.MessageDigest
 import kotlinx.coroutines.*

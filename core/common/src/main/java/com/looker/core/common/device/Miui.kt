@@ -1,4 +1,4 @@
-package com.looker.core.common.device
+package com.leos.core.common.device
 
 import android.annotation.SuppressLint
 import android.util.Log

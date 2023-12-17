@@ -1,7 +1,7 @@
-package com.looker.core.domain
+package com.leos.core.domain
 
-import com.looker.core.domain.newer.App
-import com.looker.core.domain.newer.Repo
+import com.leos.core.domain.newer.App
+import com.leos.core.domain.newer.Repo
 
 interface Syncable {
 

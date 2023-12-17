@@ -1,6 +1,6 @@
-package com.looker.core.datastore.model
+package com.leos.core.datastore.model
 
-import com.looker.core.common.device.Miui
+import com.leos.core.common.device.Miui
 
 enum class InstallerType {
     LEGACY,

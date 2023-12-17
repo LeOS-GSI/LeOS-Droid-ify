@@ -1,8 +1,8 @@
-package com.looker.sync.fdroid
+package com.leos.sync.fdroid
 
-import com.looker.core.domain.Syncable
-import com.looker.core.domain.newer.App
-import com.looker.core.domain.newer.Repo
+import com.leos.core.domain.Syncable
+import com.leos.core.domain.newer.App
+import com.leos.core.domain.newer.Repo
 
 class FdroidSyncable(override val repo: Repo) : Syncable {
 

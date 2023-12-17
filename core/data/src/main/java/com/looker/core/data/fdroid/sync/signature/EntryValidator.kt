@@ -1,12 +1,12 @@
-package com.looker.core.data.fdroid.sync.signature
+package com.leos.core.data.fdroid.sync.signature
 
-import com.looker.core.common.extension.certificate
-import com.looker.core.common.extension.codeSigner
-import com.looker.core.common.extension.fingerprint
-import com.looker.core.common.extension.toJarFile
-import com.looker.core.common.signature.FileValidator
-import com.looker.core.common.signature.ValidationException
-import com.looker.core.domain.newer.Repo
+import com.leos.core.common.extension.certificate
+import com.leos.core.common.extension.codeSigner
+import com.leos.core.common.extension.fingerprint
+import com.leos.core.common.extension.toJarFile
+import com.leos.core.common.signature.FileValidator
+import com.leos.core.common.signature.ValidationException
+import com.leos.core.domain.newer.Repo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.fdroid.index.IndexParser

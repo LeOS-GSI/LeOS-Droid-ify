@@ -1,6 +1,6 @@
-package com.looker.network.header
+package com.leos.network.header
 
-import com.looker.core.common.extension.toFormattedString
+import com.leos.core.common.extension.toFormattedString
 import io.ktor.http.HttpHeaders
 import io.ktor.util.encodeBase64
 import java.util.Date

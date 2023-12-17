@@ -1,4 +1,4 @@
-package com.looker.core.common
+package com.leos.core.common
 
 import android.util.Log
 import java.util.Locale

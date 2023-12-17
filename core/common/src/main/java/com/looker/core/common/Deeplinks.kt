@@ -1,7 +1,7 @@
-package com.looker.core.common
+package com.leos.core.common
 
 import android.content.Intent
-import com.looker.core.common.extension.get
+import com.leos.core.common.extension.get
 
 private const val PERSONAL_HOST = "droidify.eu.org"
 

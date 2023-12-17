@@ -1,4 +1,4 @@
-package com.looker.core.common.signature
+package com.leos.core.common.signature
 
 import java.io.File
 import kotlin.test.Test

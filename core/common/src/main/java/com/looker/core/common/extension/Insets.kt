@@ -1,4 +1,4 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +10,11 @@ import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
-import com.looker.core.common.SdkCheck
-import com.looker.core.common.extension.InsetSides.BOTTOM
-import com.looker.core.common.extension.InsetSides.LEFT
-import com.looker.core.common.extension.InsetSides.RIGHT
-import com.looker.core.common.extension.InsetSides.TOP
+import com.leos.core.common.SdkCheck
+import com.leos.core.common.extension.InsetSides.BOTTOM
+import com.leos.core.common.extension.InsetSides.LEFT
+import com.leos.core.common.extension.InsetSides.RIGHT
+import com.leos.core.common.extension.InsetSides.TOP
 
 fun View.systemBarsMargin(
     persistentPadding: Int,

@@ -1,4 +1,4 @@
-package com.looker.core.domain.newer
+package com.leos.core.domain.newer
 
 data class Repo(
     val id: Long,

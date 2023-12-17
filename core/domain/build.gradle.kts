@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.looker.core.domain"
+    namespace = "com.leos.core.domain"
 
     buildTypes {
         release {

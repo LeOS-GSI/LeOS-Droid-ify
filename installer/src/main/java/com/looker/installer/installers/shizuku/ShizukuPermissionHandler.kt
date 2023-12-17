@@ -1,8 +1,8 @@
-package com.looker.installer.installers.shizuku
+package com.leos.installer.installers.shizuku
 
 import android.content.Context
 import android.content.pm.PackageManager
-import com.looker.core.common.extension.getPackageInfoCompat
+import com.leos.core.common.extension.getPackageInfoCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.looker.core.datastore.model
+package com.leos.core.datastore.model
 
 // todo: Add Support for sorting by size
 enum class SortOrder {

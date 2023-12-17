@@ -1,4 +1,4 @@
-package com.looker.droidify
+package com.leos.droidify
 
 import DefaultConfig
 import com.android.build.api.dsl.CommonExtension

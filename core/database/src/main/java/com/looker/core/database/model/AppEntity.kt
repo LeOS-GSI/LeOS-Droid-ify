@@ -1,17 +1,17 @@
-package com.looker.core.database.model
+package com.leos.core.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import com.looker.core.common.nullIfEmpty
-import com.looker.core.common.toPackageName
-import com.looker.core.database.utils.localizedValue
-import com.looker.core.domain.newer.App
-import com.looker.core.domain.newer.Author
-import com.looker.core.domain.newer.Donation
-import com.looker.core.domain.newer.Graphics
-import com.looker.core.domain.newer.Links
-import com.looker.core.domain.newer.Metadata
-import com.looker.core.domain.newer.Screenshots
+import com.leos.core.common.nullIfEmpty
+import com.leos.core.common.toPackageName
+import com.leos.core.database.utils.localizedValue
+import com.leos.core.domain.newer.App
+import com.leos.core.domain.newer.Author
+import com.leos.core.domain.newer.Donation
+import com.leos.core.domain.newer.Graphics
+import com.leos.core.domain.newer.Links
+import com.leos.core.domain.newer.Metadata
+import com.leos.core.domain.newer.Screenshots
 
 internal typealias LocalizedString = Map<String, String>
 internal typealias LocalizedList = Map<String, List<String>>

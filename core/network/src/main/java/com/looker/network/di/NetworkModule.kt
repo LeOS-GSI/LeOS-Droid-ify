@@ -1,7 +1,7 @@
-package com.looker.network.di
+package com.leos.network.di
 
-import com.looker.network.Downloader
-import com.looker.network.KtorDownloader
+import com.leos.network.Downloader
+import com.leos.network.KtorDownloader
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

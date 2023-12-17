@@ -1,6 +1,6 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
-import com.looker.core.common.hex
+import com.leos.core.common.hex
 import java.security.MessageDigest
 import java.security.cert.Certificate
 import java.security.cert.CertificateEncodingException

@@ -1,4 +1,4 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 inline fun <K, E> Map<K, E>.updateAsMutable(block: MutableMap<K, E>.() -> Unit): Map<K, E> {
     return toMutableMap().apply(block)

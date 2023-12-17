@@ -1,11 +1,11 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.core.app.TaskStackBuilder
-import com.looker.core.common.SdkCheck
+import com.leos.core.common.SdkCheck
 
 inline val intentFlagCompat
     get() = if (SdkCheck.isSnowCake) {

@@ -1,8 +1,8 @@
-package com.looker.core.database.di
+package com.leos.core.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.looker.core.database.DroidifyDatabase
+import com.leos.core.database.DroidifyDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

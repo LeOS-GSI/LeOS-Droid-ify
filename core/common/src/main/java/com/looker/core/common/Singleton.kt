@@ -1,4 +1,4 @@
-package com.looker.core.common
+package com.leos.core.common
 
 class Singleton<T> {
     private var value: T? = null

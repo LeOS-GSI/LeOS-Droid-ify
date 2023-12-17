@@ -1,11 +1,11 @@
-package com.looker.core.data.fdroid.sync
+package com.leos.core.data.fdroid.sync
 
-import com.looker.core.common.signature.FileValidator
-import com.looker.core.data.fdroid.sync.signature.EntryValidator
-import com.looker.core.data.fdroid.sync.signature.IndexValidator
-import com.looker.core.domain.newer.Repo
-import com.looker.network.Downloader
-import com.looker.network.NetworkResponse
+import com.leos.core.common.signature.FileValidator
+import com.leos.core.data.fdroid.sync.signature.EntryValidator
+import com.leos.core.data.fdroid.sync.signature.IndexValidator
+import com.leos.core.domain.newer.Repo
+import com.leos.network.Downloader
+import com.leos.network.NetworkResponse
 import java.io.File
 import java.io.InputStream
 import java.util.Date

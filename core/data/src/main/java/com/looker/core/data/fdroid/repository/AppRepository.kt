@@ -1,9 +1,9 @@
-package com.looker.core.data.fdroid.repository
+package com.leos.core.data.fdroid.repository
 
-import com.looker.core.common.PackageName
-import com.looker.core.domain.newer.App
-import com.looker.core.domain.newer.Author
-import com.looker.core.domain.newer.Package
+import com.leos.core.common.PackageName
+import com.leos.core.domain.newer.App
+import com.leos.core.domain.newer.Author
+import com.leos.core.domain.newer.Package
 import kotlinx.coroutines.flow.Flow
 
 interface AppRepository {

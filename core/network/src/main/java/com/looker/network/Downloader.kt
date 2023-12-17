@@ -1,8 +1,8 @@
-package com.looker.network
+package com.leos.network
 
-import com.looker.core.common.DataSize
-import com.looker.core.common.signature.FileValidator
-import com.looker.network.header.HeadersBuilder
+import com.leos.core.common.DataSize
+import com.leos.core.common.signature.FileValidator
+import com.leos.network.header.HeadersBuilder
 import java.io.File
 import java.net.Proxy
 

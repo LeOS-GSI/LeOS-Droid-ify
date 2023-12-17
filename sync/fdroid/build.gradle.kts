@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.looker.sync.fdroid"
+    namespace = "com.leos.sync.fdroid"
 
     buildTypes {
         release {

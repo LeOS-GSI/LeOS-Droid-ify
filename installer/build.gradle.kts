@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.looker.installer"
+    namespace = "com.leos.installer"
 
     buildTypes {
         release {

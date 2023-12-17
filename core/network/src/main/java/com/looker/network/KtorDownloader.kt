@@ -1,14 +1,14 @@
-package com.looker.network
+package com.leos.network
 
-import com.looker.core.common.DataSize
-import com.looker.core.common.extension.exceptCancellation
-import com.looker.core.common.extension.size
-import com.looker.core.common.signature.FileValidator
-import com.looker.core.common.signature.ValidationException
-import com.looker.network.Downloader.Companion.CONNECTION_TIMEOUT
-import com.looker.network.Downloader.Companion.SOCKET_TIMEOUT
-import com.looker.network.header.HeadersBuilder
-import com.looker.network.header.KtorHeadersBuilder
+import com.leos.core.common.DataSize
+import com.leos.core.common.extension.exceptCancellation
+import com.leos.core.common.extension.size
+import com.leos.core.common.signature.FileValidator
+import com.leos.core.common.signature.ValidationException
+import com.leos.network.Downloader.Companion.CONNECTION_TIMEOUT
+import com.leos.network.Downloader.Companion.SOCKET_TIMEOUT
+import com.leos.network.header.HeadersBuilder
+import com.leos.network.header.KtorHeadersBuilder
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.okhttp.OkHttp

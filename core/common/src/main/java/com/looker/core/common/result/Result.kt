@@ -1,4 +1,4 @@
-package com.looker.core.common.result
+package com.leos.core.common.result
 
 sealed interface Result<out T> {
     data class Success<T>(val data: T) : Result<T>

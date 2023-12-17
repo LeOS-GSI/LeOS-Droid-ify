@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.looker.core.common"
+    namespace = "com.leos.core.common"
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
     }

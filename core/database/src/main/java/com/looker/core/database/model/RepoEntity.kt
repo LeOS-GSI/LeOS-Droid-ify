@@ -1,13 +1,13 @@
-package com.looker.core.database.model
+package com.leos.core.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.looker.core.database.utils.localizedValue
-import com.looker.core.domain.newer.AntiFeature
-import com.looker.core.domain.newer.Authentication
-import com.looker.core.domain.newer.Category
-import com.looker.core.domain.newer.Repo
-import com.looker.core.domain.newer.VersionInfo
+import com.leos.core.database.utils.localizedValue
+import com.leos.core.domain.newer.AntiFeature
+import com.leos.core.domain.newer.Authentication
+import com.leos.core.domain.newer.Category
+import com.leos.core.domain.newer.Repo
+import com.leos.core.domain.newer.VersionInfo
 import kotlinx.serialization.Serializable
 
 @Entity(tableName = "repos")

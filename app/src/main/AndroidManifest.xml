@@ -144,7 +144,7 @@
             android:foregroundServiceType="dataSync" />
 
         <service
-            android:name="com.looker.installer.installers.session.SessionInstallerService"
+            android:name="com.leos.installer.installers.session.SessionInstallerService"
             android:exported="false" />
 
         <service
@@ -169,7 +169,7 @@
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
         <provider
-            android:name="com.looker.core.common.cache.Cache$Provider"
+            android:name="com.leos.core.common.cache.Cache$Provider"
             android:authorities="${applicationId}.provider.cache"
             android:exported="false"
             android:grantUriPermissions="true" />

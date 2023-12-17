@@ -1,9 +1,9 @@
-package com.looker.core.database.dao
+package com.leos.core.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import com.looker.core.database.model.RepoEntity
+import com.leos.core.database.model.RepoEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,8 +1,8 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import android.app.Service
 import android.content.Intent
-import com.looker.core.common.SdkCheck
+import com.leos.core.common.SdkCheck
 
 fun Service.startSelf() {
     val intent = Intent(this, this::class.java)

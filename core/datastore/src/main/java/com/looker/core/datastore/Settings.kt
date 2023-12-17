@@ -1,11 +1,11 @@
-package com.looker.core.datastore
+package com.leos.core.datastore
 
 import androidx.datastore.core.Serializer
-import com.looker.core.datastore.model.AutoSync
-import com.looker.core.datastore.model.InstallerType
-import com.looker.core.datastore.model.ProxyPreference
-import com.looker.core.datastore.model.SortOrder
-import com.looker.core.datastore.model.Theme
+import com.leos.core.datastore.model.AutoSync
+import com.leos.core.datastore.model.InstallerType
+import com.leos.core.datastore.model.ProxyPreference
+import com.leos.core.datastore.model.SortOrder
+import com.leos.core.datastore.model.Theme
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream

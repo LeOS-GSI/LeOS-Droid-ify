@@ -1,4 +1,4 @@
-package com.looker.core.common
+package com.leos.core.common
 
 @JvmInline
 value class PackageName(val name: String)

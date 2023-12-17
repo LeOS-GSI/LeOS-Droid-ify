@@ -1,4 +1,4 @@
-package com.looker.core.datastore.model
+package com.leos.core.datastore.model
 
 import kotlinx.serialization.Serializable
 

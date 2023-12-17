@@ -1,6 +1,6 @@
-package com.looker.core.domain.newer
+package com.leos.core.domain.newer
 
-import com.looker.core.common.PackageName
+import com.leos.core.common.PackageName
 
 data class App(
     val repoId: Long,

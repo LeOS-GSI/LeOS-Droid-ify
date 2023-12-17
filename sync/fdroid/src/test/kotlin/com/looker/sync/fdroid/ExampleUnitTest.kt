@@ -1,4 +1,4 @@
-package com.looker.sync.fdroid
+package com.leos.sync.fdroid
 
 import org.junit.Test
 

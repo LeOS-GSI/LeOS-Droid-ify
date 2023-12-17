@@ -1,4 +1,4 @@
-package com.looker.installer.model
+package com.leos.installer.model
 
 enum class InstallState { Failed, Pending, Installing, Installed }
 

@@ -1,4 +1,4 @@
-package com.looker.droidify
+package com.leos.droidify
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.MinimalExternalModuleDependency

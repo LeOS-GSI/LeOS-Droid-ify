@@ -1,11 +1,11 @@
-package com.looker.core.database
+package com.leos.core.database
 
 import androidx.room.TypeConverter
-import com.looker.core.database.model.AntiFeatureEntity
-import com.looker.core.database.model.CategoryEntity
-import com.looker.core.database.model.LocalizedList
-import com.looker.core.database.model.LocalizedString
-import com.looker.core.database.model.PackageEntity
+import com.leos.core.database.model.AntiFeatureEntity
+import com.leos.core.database.model.CategoryEntity
+import com.leos.core.database.model.LocalizedList
+import com.leos.core.database.model.LocalizedString
+import com.leos.core.database.model.PackageEntity
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.builtins.MapSerializer
 import kotlinx.serialization.builtins.serializer

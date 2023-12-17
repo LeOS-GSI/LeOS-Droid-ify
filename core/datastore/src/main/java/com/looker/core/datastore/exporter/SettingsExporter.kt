@@ -1,9 +1,9 @@
-package com.looker.core.datastore.exporter
+package com.leos.core.datastore.exporter
 
 import android.content.Context
 import android.net.Uri
-import com.looker.core.common.Exporter
-import com.looker.core.datastore.Settings
+import com.leos.core.common.Exporter
+import com.leos.core.datastore.Settings
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel

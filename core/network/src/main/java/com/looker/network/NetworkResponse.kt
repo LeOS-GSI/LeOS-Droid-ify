@@ -1,6 +1,6 @@
-package com.looker.network
+package com.leos.network
 
-import com.looker.core.common.signature.ValidationException
+import com.leos.core.common.signature.ValidationException
 import java.util.Date
 
 sealed interface NetworkResponse {

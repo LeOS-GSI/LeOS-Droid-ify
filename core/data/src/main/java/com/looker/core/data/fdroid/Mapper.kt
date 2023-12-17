@@ -1,11 +1,11 @@
-package com.looker.core.data.fdroid
+package com.leos.core.data.fdroid
 
-import com.looker.core.database.model.AntiFeatureEntity
-import com.looker.core.database.model.AppEntity
-import com.looker.core.database.model.CategoryEntity
-import com.looker.core.database.model.PackageEntity
-import com.looker.core.database.model.PermissionEntity
-import com.looker.core.database.model.RepoEntity
+import com.leos.core.database.model.AntiFeatureEntity
+import com.leos.core.database.model.AppEntity
+import com.leos.core.database.model.CategoryEntity
+import com.leos.core.database.model.PackageEntity
+import com.leos.core.database.model.PermissionEntity
+import com.leos.core.database.model.RepoEntity
 import org.fdroid.index.v2.PackageV2
 import org.fdroid.index.v2.PackageVersionV2
 import org.fdroid.index.v2.RepoV2

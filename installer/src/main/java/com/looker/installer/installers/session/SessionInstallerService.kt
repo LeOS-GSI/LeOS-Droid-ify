@@ -1,4 +1,4 @@
-package com.looker.installer.installers.session
+package com.leos.installer.installers.session
 
 import android.app.Service
 import android.content.Intent
@@ -7,10 +7,10 @@ import android.content.pm.PackageManager
 import android.os.IBinder
 import android.view.ContextThemeWrapper
 import androidx.core.app.NotificationCompat
-import com.looker.core.common.Constants.NOTIFICATION_CHANNEL_DOWNLOADING
-import com.looker.core.common.Constants.NOTIFICATION_ID_DOWNLOADING
-import com.looker.core.common.R as CommonR
-import com.looker.core.common.extension.notificationManager
+import com.leos.core.common.Constants.NOTIFICATION_CHANNEL_DOWNLOADING
+import com.leos.core.common.Constants.NOTIFICATION_ID_DOWNLOADING
+import com.leos.core.common.R as CommonR
+import com.leos.core.common.extension.notificationManager
 
 class SessionInstallerService : Service() {
     companion object {

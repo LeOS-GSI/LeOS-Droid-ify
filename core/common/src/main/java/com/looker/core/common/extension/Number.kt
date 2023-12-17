@@ -1,9 +1,9 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import android.content.res.Resources
 import android.util.TypedValue
 import android.view.View
-import com.looker.core.common.DataSize
+import com.leos.core.common.DataSize
 import kotlin.math.roundToInt
 
 infix fun Long.percentBy(denominator: Long?): Int {

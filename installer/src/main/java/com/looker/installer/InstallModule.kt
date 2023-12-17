@@ -1,9 +1,9 @@
-package com.looker.installer
+package com.leos.installer
 
 import android.content.Context
-import com.looker.core.datastore.SettingsRepository
-import com.looker.installer.installers.root.RootPermissionHandler
-import com.looker.installer.installers.shizuku.ShizukuPermissionHandler
+import com.leos.core.datastore.SettingsRepository
+import com.leos.installer.installers.root.RootPermissionHandler
+import com.leos.installer.installers.shizuku.ShizukuPermissionHandler
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

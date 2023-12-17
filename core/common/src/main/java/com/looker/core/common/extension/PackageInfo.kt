@@ -1,9 +1,9 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import android.content.Intent
 import android.content.pm.*
-import com.looker.core.common.SdkCheck
-import com.looker.core.common.hex
+import com.leos.core.common.SdkCheck
+import com.leos.core.common.hex
 import java.security.MessageDigest
 
 val PackageInfo.singleSignature: Signature?

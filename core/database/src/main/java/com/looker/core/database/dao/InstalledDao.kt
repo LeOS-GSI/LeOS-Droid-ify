@@ -1,7 +1,7 @@
-package com.looker.core.database.dao
+package com.leos.core.database.dao
 
 import androidx.room.*
-import com.looker.core.database.model.InstalledEntity
+import com.leos.core.database.model.InstalledEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

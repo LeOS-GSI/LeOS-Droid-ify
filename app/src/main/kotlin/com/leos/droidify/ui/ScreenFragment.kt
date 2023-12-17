@@ -1,4 +1,4 @@
-package com.looker.droidify.ui
+package com.leos.droidify.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.appbar.MaterialToolbar
-import com.looker.droidify.databinding.FragmentBinding
+import com.leos.droidify.databinding.FragmentBinding
 
 open class ScreenFragment : Fragment() {
     private var _fragmentBinding: FragmentBinding? = null

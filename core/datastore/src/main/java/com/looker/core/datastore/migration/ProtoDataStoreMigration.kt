@@ -1,4 +1,4 @@
-package com.looker.core.datastore.migration
+package com.leos.core.datastore.migration
 
 import androidx.datastore.core.DataMigration
 import androidx.datastore.core.DataStore
@@ -9,13 +9,13 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
-import com.looker.core.datastore.Settings
-import com.looker.core.datastore.model.AutoSync
-import com.looker.core.datastore.model.InstallerType
-import com.looker.core.datastore.model.ProxyPreference
-import com.looker.core.datastore.model.ProxyType
-import com.looker.core.datastore.model.SortOrder
-import com.looker.core.datastore.model.Theme
+import com.leos.core.datastore.Settings
+import com.leos.core.datastore.model.AutoSync
+import com.leos.core.datastore.model.InstallerType
+import com.leos.core.datastore.model.ProxyPreference
+import com.leos.core.datastore.model.ProxyType
+import com.leos.core.datastore.model.SortOrder
+import com.leos.core.datastore.model.Theme
 import kotlin.time.Duration.Companion.hours
 import kotlinx.coroutines.flow.first
 import kotlinx.datetime.Instant

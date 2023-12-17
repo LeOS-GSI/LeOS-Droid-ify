@@ -1,4 +1,4 @@
-package com.looker.installer.installers.session
+package com.leos.installer.installers.session
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
@@ -9,14 +9,14 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import com.looker.core.common.PackageName
-import com.looker.core.common.SdkCheck
-import com.looker.core.common.cache.Cache
-import com.looker.core.common.log
-import com.looker.core.common.sdkAbove
-import com.looker.installer.installers.Installer
-import com.looker.installer.model.InstallItem
-import com.looker.installer.model.InstallState
+import com.leos.core.common.PackageName
+import com.leos.core.common.SdkCheck
+import com.leos.core.common.cache.Cache
+import com.leos.core.common.log
+import com.leos.core.common.sdkAbove
+import com.leos.installer.installers.Installer
+import com.leos.installer.model.InstallItem
+import com.leos.installer.model.InstallState
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 

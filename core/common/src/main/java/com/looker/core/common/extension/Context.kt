@@ -1,4 +1,4 @@
-package com.looker.core.common.extension
+package com.leos.core.common.extension
 
 import android.app.NotificationManager
 import android.app.job.JobScheduler
@@ -14,7 +14,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
-import com.looker.core.common.R
+import com.leos.core.common.R
 
 inline val Context.clipboardManager: ClipboardManager?
     get() = getSystemService()
