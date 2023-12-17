@@ -4,6 +4,6 @@ object DefaultConfig {
     const val appId = "com.leos.droidify"
     const val compileSdk = 34
     const val minSdk = 23
-    const val versionCode = 595
-    const val versionName = "0.5.9 Patch 5"
+    const val versionCode = 666
+    const val versionName = "v01.6.4"
 }
